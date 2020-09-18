@@ -16,7 +16,7 @@ nav li {
   color: black; }
 
 html, body {
-  background-image: url("/public/images/whiteg.jpg");
+  background-color: white;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;

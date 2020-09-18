@@ -10,13 +10,12 @@ router.use((req, res, next) => {
     if (req.session.currentUser) {
         next()
     } else {
-        res.render('login-form', { errorMessage: 'Inicia sesión para acceder...' })
+        res.render('/', { errorMessage: 'Inicia sesión para acceder...' })
     }
 })
-// Equivalencia pro! yay!
-// router.use((req, res, next) => req.session.currentUser ? next() : res.render('login-form', { errorMessage: 'Inicia sesión para acceder...' }))
 
-router.get('/perfil', (req, res) => res.render('profile', req.session.currentUser))
+
+router.get('/perfil', (req, res) => res.render('perfil/index', req.session.currentUser))
 
 
 module.exports = router

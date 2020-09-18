@@ -32,7 +32,7 @@ router.post('/registro', (req, res) => {
             const hashPass = bcrypt.hashSync(password, salt)
 
             User.create({ username, password: hashPass })
-                .then(() => res.redirect('/'))
+                .then(() => res.redirect('/perfil'))
                 .catch(err => console.log(err))
 
         })
@@ -62,7 +62,7 @@ router.post('/', (req, res) => {
 
             if (bcrypt.compareSync(password, theFoundUser.password)) {
                 req.session.currentUser = theFoundUser      // Guardamos el usuario logueado en req.session.currentUser
-                res.redirect("/")
+                res.redirect("/perfil")
             } else {
                 res.render('index', { errorMessage: 'Contraseña incorrecta' })
             }
@@ -72,7 +72,7 @@ router.post('/', (req, res) => {
 
 
 router.get('/cerrar-sesion', (req, res) => {
-    req.session.destroy(() => res.redirect("/login"))
+    req.session.destroy(() => res.redirect("/"))
 })
 
 module.exports = router
