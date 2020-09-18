@@ -1,21 +1,21 @@
 const express = require('express')
 const router = express.Router()
 
+
+const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
+ res.render('/', { errorMessage: 'Desautorizado, inicia sesión para continuar' })
+
+const checkRole = rolesToCheck => {
+    return (req, res, next) => {
+        
+        if (req.isAuthenticated() && rolesToCheck.includes(req.user.role))
+            next()
+        else 
+            res.render('/', { errorMessage: 'Desautorizado, no tienes permisos para ver eso.' })
+    }
+}
 // Endpoints
 router.get('/', (req, res) => res.render('index'))
-
-
-// Middleware personalizado de detección de sesión
-router.use((req, res, next) => {
-    if (req.session.currentUser) {
-        next()
-    } else {
-        res.render('/', { errorMessage: 'Inicia sesión para acceder...' })
-    }
-})
-
-
-router.get('/perfil', (req, res) => res.render('perfil/index', req.session.currentUser))
-
+router.get('/perfil', checkLoggedIn, (req, res, next) => res.render('/perfil/index', { user: req.user }))
 
 module.exports = router
