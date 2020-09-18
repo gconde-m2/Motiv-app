@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 module.exports = app => {
 
     app.use(session({
-        secret: "login",
+        secret: "webmad0820-basic-auth",
         cookie: { maxAge: 60000 },
         store: new MongoStore({
             mongooseConnection: mongoose.connection,

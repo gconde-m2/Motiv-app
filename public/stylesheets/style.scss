@@ -2,3 +2,38 @@ body {
   padding: 50px;
   font-family: sans-serif;
 }
+
+nav {
+  float: right;
+}
+
+nav li {
+  display: inline-block;
+  list-style: none;
+  margin: 0 10px
+}
+*{
+  font-family: Apple Chancery, cursive;
+  color: black;
+}
+body {
+  font: 14px sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.container {
+  padding-top: 95px;
+  padding-bottom: 95px;
+}
+
+h1, h2, h3 {
+  margin-bottom: 40px;
+  font-weight: 100;
+}
+
+.coasters-index .btn {
+  float: right;
+}
