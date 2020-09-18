@@ -42,13 +42,13 @@ router.post('/registro', (req, res) => {
 
 
 // Formulario de incio de sesión
-router.get('/iniciar-sesion', (req, res) => res.render('login-form'))
-router.post('/iniciar-sesion', (req, res) => {
+
+router.post('/', (req, res) => {
 
     const { username, password } = req.body
 
     if (username === '' || password === '') {
-        res.render('login-form', { errorMessage: 'Rellena los campos, ¡merluzo!' })
+        res.render('index', { errorMessage: 'Rellena los campos' })
         return
     }
 
@@ -56,7 +56,7 @@ router.post('/iniciar-sesion', (req, res) => {
         .then(theFoundUser => {
 
             if (!theFoundUser) {
-                res.render('login-form', { errorMessage: 'Usuario no registrado' })
+                res.render('index', { errorMessage: 'Usuario no registrado' })
                 return
             }
 
@@ -64,7 +64,7 @@ router.post('/iniciar-sesion', (req, res) => {
                 req.session.currentUser = theFoundUser      // Guardamos el usuario logueado en req.session.currentUser
                 res.redirect("/")
             } else {
-                res.render('login-form', { errorMessage: 'Contraseña incorrecta' })
+                res.render('index', { errorMessage: 'Contraseña incorrecta' })
             }
         })
         .catch(err => console.log(err))
