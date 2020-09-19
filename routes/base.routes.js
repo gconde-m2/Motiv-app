@@ -3,7 +3,7 @@ const router = express.Router()
 
 
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
- res.render('/', { errorMessage: 'Desautorizado, inicia sesión para continuar' })
+ res.render('index', { errorMessage: 'Desautorizado, inicia sesión para continuar' })
 
 const checkRole = rolesToCheck => {
     return (req, res, next) => {
@@ -11,11 +11,11 @@ const checkRole = rolesToCheck => {
         if (req.isAuthenticated() && rolesToCheck.includes(req.user.role))
             next()
         else 
-            res.render('/', { errorMessage: 'Desautorizado, no tienes permisos para ver eso.' })
+            res.render('index', { errorMessage: 'Desautorizado, no tienes permisos para ver eso.' })
     }
 }
 // Endpoints
 router.get('/', (req, res) => res.render('index'))
-router.get('/perfil', checkLoggedIn, (req, res, next) => res.render('/perfil/index', { user: req.user }))
+router.get('/perfil', checkLoggedIn, (req, res, next) => res.render('perfil/index',  {user: req.user }))
 
 module.exports = router

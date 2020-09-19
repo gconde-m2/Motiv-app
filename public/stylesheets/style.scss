@@ -1,8 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 body {
   padding: 50px;
   font-family: sans-serif;
 }
+
+* {
+  font-family: 'Cormorant Garamond',
+    serif;
+
+}
+
+a:link {
+  text-decoration: none;
+  color: white;
+}
+
+
+a:visited {
+  text-decoration: none;
+  color: white;
+}
+
 
 nav {
   float: right;
@@ -13,137 +32,232 @@ nav li {
   list-style: none;
   margin: 0 10px
 }
-*{
- 
-  font-family: Cormorant;
-  color: black;
-}
 
-html,body{
-  background-color:white;
+html,
+body {
+  background-color: white;
+  ;
   background-size: cover;
   background-repeat: no-repeat;
   height: 100%;
-  font-family: 'Numans', sans-serif;
-  }
-  
-  .container{
+}
+
+.container {
   height: 100%;
   align-content: center;
-  }
-  
-  .card{
-    text-align: center;
-  height: 600px;
-  margin-top: 150px;
-  margin-bottom: auto;
-  
-  width: 400px;
-  background-color: rgba(0,0,0,0.8) !important;
-  }
-  .pepe{
-    margin-top: 100px;
-    margin-bottom: 100px;
-  }
- 
-  input {
-    color: #fff;
-    background: none;
-    border:none;
-    border-bottom:1px solid #fff;
 }
-.login-inputs{
+
+input {
+  color: #fff;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+}
+
+.login-inputs {
 
   margin-left: auto;
   margin-right: auto;
 }
-.input-pass{
 
-    margin-bottom: 40px;
+
+.input-pass {
+
+  margin-bottom: 40px;
 }
-  .card-header h3{
+
+.card-header h3 {
   color: white;
-  }
-  
-  
-  input:focus{
-  outline: 0 0 0 0  !important;
+}
+
+
+input:focus {
+  outline: 0 0 0 0 !important;
   box-shadow: 0 0 0 0 !important;
-  
-  }
-  
-  .remember{
+
+}
+
+.remember {
   color: white;
-  }
-  
-  .remember input
-  {
+}
+
+.remember input {
   width: 20px;
   height: 20px;
   margin-left: 15px;
   margin-right: 5px;
-  }
-  
-  .login_btn{
+}
+
+.login_btn {
   color: black;
   background-color: white;
   width: 100px;
   margin-right: auto;
   margin-left: auto;
-  }
-  
-  .login_btn:hover{
-  color: black;
-  background-color: white;
-  }
-  
-  .links{
+}
+
+
+.links {
   color: white;
-  }
-  
-  .links a{
+}
+
+.links a {
   margin-left: 4px;
-  }
+}
 
-  .title-main{
-    font-stretch: condensed;
-    font-size: 140px;
-    margin-top: 110px;
-    margin-left: 50px;
-  }
-  #phrase{
-    margin-left: 50px;
-    font-size: 100px
+.title-main {
+  font-stretch: condensed;
+  font-size: 150px;
+  margin-top: 110px;
+}
 
-  }
+#phrase {
 
-  .motiv-phrase-space{
+  font-size: 100px
+}
 
-    
-   position: relative;
-    text-align: center;
+.main-text {
+  font-family: 'Cormorant Garamond',
+    serif;
+}
 
-  }
-  .motiv-phrase{
-  
-    padding-top:250px;
-    font-size: 50px;
+.scnd-text {
+  font-family: 'Raleway',
+    sans-serif;
+}
 
-  }
-  .section-menu{
- 
-    background-color: black;
-    text-align: center;
-    
-    height: 300px;
-    padding-top: 115px;
-  }
-  .white{
-    
-    color: white;
-  }
-  .hrefs{
-    
-    font-size: 40px;
-    margin-top: 100px;
-  }
+
+
+.log-in {
+
+  color: white;
+  text-align: center;
+  height: 45vh;
+  margin-top: 150px;
+  margin-bottom: auto;
+  width: 310px;
+  background-color: #252525 !important;
+}
+
+.log-in .whole-form {
+  margin-top: 5vh;
+}
+
+.log-in h3 {
+  color: white;
+  margin-top: 4vh;
+  font-weight: 400;
+  font-size: 1.3em;
+
+}
+
+.log-in form {
+  margin-top: 6vh;
+  font-size: 1em;
+}
+
+.log-in .passw-space {
+  margin-top: 4vh;
+  margin-bottom: 3vh;
+}
+
+
+.login_btn {
+  font-weight: 200;
+  transition: color;
+}
+
+.log-in label {
+  font-size: 1em;
+  font-weight: 200;
+
+}
+
+
+.log-in .end-text {
+  margin-top: 1vhpx;
+  font-size: .9em;
+  font-weight: 200;
+}
+
+.log-in .login-inputs {
+  width: 70%;
+}
+
+.text-index {
+  margin-left: 7vw;
+}
+
+.text-index h1 {
+  font-size: 400;
+}
+
+.text-index #phrase {
+  font-size: 4em;
+}
+
+.log-in a:hover {
+  color: #252525;
+  background-color: white;
+  cursor: crosshair;
+}
+
+.log-in a:active {
+  color: white;
+  background-color: #252525;
+}
+
+input:focus {
+  outline: none;
+  background-color: white;
+  color: #252525;
+}
+
+
+.login_btn:hover {
+  border-color: #252525;
+  background-color: #252525;
+  color: white;
+  cursor: crosshair;
+}
+
+.login_btn:active {
+  border-color: #252525;
+  background-color: white;
+  color: #252525;
+}
+
+//-----------------------------------
+//DE AQUÍ EN ADELANTE NO HE TOCADO NADA
+
+.motiv-phrase-space {
+
+  position: relative;
+  text-align: center;
+
+}
+
+.motiv-phrase {
+
+  padding-top: 250px;
+  font-size: 50px;
+
+}
+
+.section-menu {
+
+  background-color: black;
+  text-align: center;
+
+  height: 300px;
+  padding-top: 115px;
+}
+
+.white {
+  color: white;
+}
+
+.hrefs {
+  font-size: 40px;
+  margin-top: 100px;
+}

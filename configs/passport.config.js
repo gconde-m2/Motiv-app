@@ -2,8 +2,7 @@ const session = require("express-session")
 const bcrypt = require("bcrypt")
 const passport = require("passport")
 const LocalStrategy = require("passport-local").Strategy
-const flash = require("connect-flash") // error handling
-
+const flash = require("connect-flash") 
 const User = require('../models/User.model')
 
 module.exports = app => {
@@ -28,7 +27,9 @@ module.exports = app => {
     passport.use(new LocalStrategy({ passReqToCallback: true }, (req, username, password, next) => {
         User.findOne({ username }, (err, user) => {
             if (err) return next(err)
-            if (!user) return next(null, false, { errorMessage: "Incorrect username" })
+            if (!user){ 
+                console.log("holaaaaaa")
+                return next(null, false, { errorMessage: "Incorrect username" })}
             if (!bcrypt.compareSync(password, user.password)) return next(null, false, { errorMessage: "Incorrect password" })
             return next(null, user)
         })

@@ -1,17 +1,65 @@
-<h1>Registro de usuario</h1>
+<script src="https://cdn.jsdelivr.net/npm/typeit@7.0.4/dist/typeit.min.js"></script>
 
-<form action="/registro" method="POST">
+<body>
+    <div class="row">
+        <div class="container col-4">
+            <div class="d-flex justify-content-center h-100">
+                <div class="log-in">
+                    <div class="whole-form">
+                        <h3 class="scnd-text">Sign up</h3>
+                        <div>
+                            <form action="/registro" method="POST">
+                                <div>
+                                    <label for="username" class="scnd-text">Username</label>
+                                    <div>
+                                        <input name="username" type="text" class="login-inputs scnd-text">
+                                    </div>
+                                </div>
+                                <div class="passw-space">
+                                    <label for="password" class="scnd-text">Password</label>
+                                    <div class="input-group form-group input-pass">
+                                        <input name="password" type="password" class="login-inputs scnd-text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Sign up" class="login_btn scnd-text">
 
-    <label for="username">Username</label><br>
-    <input type="text" name="username" placeholder="Your username"><br><br>
+                                </div>
+                                {{#if errorMessage}}
+                                <p style="color: red; font-weight: bold; "> {{errorMessage}} </p>
+                                {{/if}}
+                            </form>
 
-    <label for="password">Password</label><br>
-    <input type="password" name="password" placeholder="********"><br><br>
+                        </div>
 
-    {{#if errorMessage}}
-    <p style="color: red; font-weight: bold; "> {{errorMessage}} </p>
-    {{/if}}
 
-    <button type="submit">Registro</button>
+                    </div>
 
-</form>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="text-index">
+                <h1 class="title-main">Motiv</h1>
+                <h2 class="scnd-text">for</h2>
+                <h2 id="phrase" class="scnd-text"></h2>
+            </div>
+
+        </div>
+        <div class="col-3">
+
+
+        </div>
+    </div>
+</body>
+<script>
+    new TypeIt("#phrase", {
+        strings: ["running", "work", "life"],
+        startDelete: true,
+        speed: 65,
+        loop: true,
+        cursorChar: " _"
+
+    }).go();
+</script>

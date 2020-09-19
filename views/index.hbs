@@ -4,64 +4,66 @@
 	<div class="row">
 		<div class="container col-4">
 			<div class="d-flex justify-content-center h-100">
-				<div class="card">
-					<div class="card-header">
-						<h3>Log in</h3>
+				<div class="log-in">
+					<div class="whole-form">
+						<h3 class="scnd-text">Log in</h3>
+						<div>
+							<form action="/" method="POST">
+								<div>
+									<label for="" class="scnd-text">Name</label>
+									<div>
 
-					</div>
-					<div class="card-body">
-						<form action="/" method="POST">
-							<div class="pepe">
-								<label style="color:white" for="">Name</label>
-								<div class="input-group form-group ">
-
-									<input name="username" type="text" class="login-inputs">
+										<input name="username" type="text" class="login-inputs scnd-text">
+									</div>
+								</div>
+								<div class="passw-space"><label for="" class="scnd-text">Password</label>
+									<div class="input-group form-group input-pass">
+										<input name="password" type="password" class="login-inputs scnd-text">
+									</div>
+								</div>
+								<div class="form-group">
+									<input type="submit" value="Login" class="login_btn scnd-text">
 
 								</div>
-							</div>
-							<label style="color:white" for="">Password</label>
-							<div class="input-group form-group input-pass">
-									
-								<input name="password" type="password" class="login-inputs">
-							</div>
-							
-							<div class="form-group">
-								<input type="submit" value="Login" class=" login_btn">
-							</div>
-						{{#if errorMessage}}
-   							 <p style="color: red; font-weight: bold; "> {{errorMessage}} </p>
-    					{{/if}}
-						</form>
-	
-					</div>
-					<div class="card-footer">
-						<div class="d-flex justify-content-center links">
-							Don't have an account?<a href="/registro">Sign Up</a>
+								{{#if errorMessage}}
+								<p style="color: red; font-weight: bold; "> {{errorMessage}} </p>
+								{{/if}}
+							</form>
+
 						</div>
-						<div class="d-flex justify-content-center">
-							<a href="/registro">Forgot your password?</a>
+						<div class="end-text">
+							<div class="d-flex justify-content-center links scnd-text">
+								Don't have an account?<a href="/registro" class="scnd-text">Sign Up</a>
+							</div>
 						</div>
+
 					</div>
+
 				</div>
+
 			</div>
 		</div>
-		
-		<div class="col-4">
-			<h1 class= "title-main">Motiv</h1>
-			<h1 id= "phrase"></h1>
+		<div class="col-5">
+			<div class="text-index">
+				<h1 class="title-main">Motiv</h1>
+				<h2 class="scnd-text">for</h2>
+				<h2 id="phrase" class="scnd-text"></h2>
+			</div>
 
 		</div>
-		<div class="col-4">
-			
+		<div class="col-3">
+
 
 		</div>
 	</div>
 </body>
 <script>
 	new TypeIt("#phrase", {
-  strings: ["for running","for life","for work"],
-  speed: 75,
-  loop: true,
-  cursorChar: " _"
-}).go();
+		strings: ["running", "my garden", "life"],
+		startDelete: true,
+		speed: 65,
+		loop: true,
+		cursorChar: " _"
+
+	}).go();
 </script>
