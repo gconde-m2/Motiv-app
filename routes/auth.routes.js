@@ -35,7 +35,7 @@ router.post("/registro",(req,res,next) => {
   const hashPass = bcrypt.hashSync(password, salt)
 
   User.create({username,password:hashPass})
-  .then(() => res.redirect('/perfil'))
+  .then(() => res.redirect('/'))
   .catch(error => next(error))
 })
 //log in!!!!!

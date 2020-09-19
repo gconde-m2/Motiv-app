@@ -14,6 +14,7 @@ const checkRole = rolesToCheck => {
             res.render('index', { errorMessage: 'Desautorizado, no tienes permisos para ver eso.' })
     }
 }
+
 // Endpoints
 router.get('/', (req, res) => res.render('index'))
 router.get('/perfil', checkLoggedIn, (req, res, next) => res.render('perfil/index',  {user: req.user }))
