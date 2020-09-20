@@ -20,13 +20,13 @@ router.post("/registro",(req,res,next) => {
     const {username,password} = req.body
 
     if (username.length === 0 || password.length === 0) {
-      res.render("signup-form", { message: "Indicate username and password" })
+      res.render("signup-form", { errorMessage: "Indicate username and password" })
       return
   }
   User.findOne({ username })
 .then(user => {
           if (user) {
-              res.render("signup-form", { message: "The username already exists" })
+              res.render("signup-form", { errorMessage: "The username already exists" })
               return
           }
   })
@@ -39,7 +39,7 @@ router.post("/registro",(req,res,next) => {
 })
 //log in!!!!!
 
-router.get('/', (req, res) => res.render('index',{"errorMessage":req.flash("error")}))
+
 router.post("/", passport.authenticate("local", {
   
     successRedirect: "/main",

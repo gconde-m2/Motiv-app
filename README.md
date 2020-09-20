@@ -7,11 +7,15 @@
 
 # Routes
 
-| Route         | Definition    | Functional| |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned |  yes  |
-| col 2 is      | centered      |  yes  |
-| zebra stripes | are neat      |  yes  |
+| Route        | Working | Function                                           |
+|--------------|---------|----------------------------------------------------|
+| /            | YES     | Landing page/Login                                 |
+| /registro    | YES     | Register page/Redirect to login                    |
+| /main        | YES     | Main user page / redirect to Goals/Set aim/Profile |
+| /main/goals  | HALF    | Where you can see your goals/                      |
+| /main/setaim | HALF    | Where you create your goals/                       |
+| /main/perfil | HALF    | You can change your profile/goals                  |
+
 
 
 
