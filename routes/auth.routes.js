@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
-// Require user model
+
+const passport = require("passport")
 const User = require("../models/User.model")
-// Add bcrypt to encrypt passwords
+
 const bcrypt = require("bcrypt")
 const bcryptSalt = 10
-// Add passport
-const passport = require("passport")
 
 
-const ensureLogin = require('connect-ensure-login');
+
+
 
 
 // signup!!!!!!!!!
@@ -23,7 +23,6 @@ router.post("/registro",(req,res,next) => {
       res.render("signup-form", { message: "Indicate username and password" })
       return
   }
-
   User.findOne({ username })
 .then(user => {
           if (user) {
@@ -40,14 +39,15 @@ router.post("/registro",(req,res,next) => {
 })
 //log in!!!!!
 
-
+router.get('/', (req, res) => res.render('index',{"errorMessage":req.flash("error")}))
 router.post("/", passport.authenticate("local", {
   
-    successRedirect: "/perfil",
+    successRedirect: "/main",
     failureRedirect: "/",
     failureFlash: true,
     passReqToCallback: true
 }))
+
 
 
 module.exports = router;

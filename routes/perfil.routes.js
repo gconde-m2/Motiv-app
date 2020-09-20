@@ -2,24 +2,40 @@ const express = require('express')
 const router = express.Router()
 const User = require("../models/User.model")
 const ensureLogin = require('connect-ensure-login');
-
+const Sentence = require('../models/sentence.model')
 
 
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
  res.render('index', { errorMessage: 'Desautorizado, inicia sesión para continuar' })
+
+ router.get('/', checkLoggedIn, (req, res, next) =>{ 
+     
+    Sentence
+    .count()
+    .exec(function (err, count) {
+
+        var random = Math.floor(Math.random() * count)
+    
+        Sentence.findOne().skip(random).exec(
+          function (err, sentence) {
+             res.render('main/index',  { sentence,user: req.user  })
+          })
+        })
+    })
+
 //goals
-router.get('/goals', checkLoggedIn, (req, res, next) => res.render('perfil/goals',  {user: req.user }))
+router.get('/goals', checkLoggedIn, (req, res, next) => res.render('main/goals',  {user: req.user }))
 
 //Set aim
-router.get('/setaim', checkLoggedIn, (req, res, next) => res.render('perfil/setAim',  {user: req.user }))
+router.get('/setaim', checkLoggedIn, (req, res, next) => res.render('main/setAim',  {user: req.user }))
 
 //profile
-router.get('/perfil', checkLoggedIn, (req, res, next) => res.render('perfil/profile',  {user: req.user }))
+router.get('/perfil', checkLoggedIn, (req, res, next) => res.render('main/profile',  {user: req.user }))
 
 
 //musica prueba
 
-router.get('/music', checkLoggedIn, (req, res, next) => res.render('perfil/spoty/music',  {user: req.user }))
+router.get('/music', checkLoggedIn, (req, res, next) => res.render('main/spoty/music',  {user: req.user }))
 var SpotifyWebApi = require('spotify-web-api-node');
 
 const spotifyApi = new SpotifyWebApi({
@@ -37,7 +53,7 @@ router.get('/artist-search', (req, res) => {
     spotifyApi
         .searchArtists(req.query.artist)
         .then(data => {
-            res.render('perfil/spoty/artist-results', {searchedArt: data.body.artists.items} )
+            res.render('main/spoty/artist-results', {searchedArt: data.body.artists.items} )
         })
         .catch(err => console.log('error', err));
 
@@ -45,11 +61,10 @@ router.get('/artist-search', (req, res) => {
 router.get('/:artistId/albums', (req, res, next) => {
     spotifyApi.getArtistAlbums(req.params.artistId)
     .then(data => {
-        res.render('perfil/spoty/albums-results', {artistAlbums: data.body.items})
+        res.render('main/spoty/albums-results', {artistAlbums: data.body.items})
     })
     .catch(err => console.log('Error', err))
 });
-
 
 
 router.get('/:albumId/tracks', (req,res)=>{
@@ -57,10 +72,12 @@ router.get('/:albumId/tracks', (req,res)=>{
     spotifyApi.getAlbumTracks(req.params.albumId)
     .then(data =>{
 
-        res.render('perfil/spoty/tracks-results', {tracksPage: data.body.items})
+        res.render('main/spoty/tracks-results', {tracksPage: data.body.items})
     })
     .catch(err => console.log('Error', err))
 })
+
+
 // router.post('/:albumId/tracks',(req,res)=>{
 //     const goal_id = req.params.song_id
 //     Goal.findByIdAndUpdate(goal_id, { title, description, author, rating })
@@ -72,8 +89,5 @@ router.get('/:albumId/tracks', (req,res)=>{
     // No disponemos del ID en el formulario, por lo que lo obtenemos mediante Route Params
     
 
-   
-
-  
 //musica enddd
 module.exports = router
