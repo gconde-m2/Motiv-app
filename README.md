@@ -1,6 +1,15 @@
-# Express generator
+# Motiv
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text
+- Nombre del proyecto : Motiv
+- Creadores: Gabriela Casero y Guillermo Conde
+- Descripcion: Aplicación que te recuerda tus metas y te motiva a conseguirlas.
 
-Boilerplate for a basic ExpressJS backend
+# Routes
+
+
+
+
+
 
 ## Install
 
