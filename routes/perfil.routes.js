@@ -1,7 +1,10 @@
 const express = require('express')
 const router = express.Router()
-
+const User = require("../models/User.model")
 const ensureLogin = require('connect-ensure-login');
+
+
+
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
  res.render('index', { errorMessage: 'Desautorizado, inicia sesión para continuar' })
 //goals
@@ -58,5 +61,19 @@ router.get('/:albumId/tracks', (req,res)=>{
     })
     .catch(err => console.log('Error', err))
 })
+// router.post('/:albumId/tracks',(req,res)=>{
+//     const goal_id = req.params.song_id
+//     Goal.findByIdAndUpdate(goal_id, { title, description, author, rating })
+//     .then(() => res.redirect('/libros/listado'))
+//     .catch(err => console.log("ERRORR", err))
+// })
+
+
+    // No disponemos del ID en el formulario, por lo que lo obtenemos mediante Route Params
+    
+
+   
+
+  
 //musica enddd
 module.exports = router

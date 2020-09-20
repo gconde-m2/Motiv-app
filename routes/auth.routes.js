@@ -41,7 +41,6 @@ router.post("/registro",(req,res,next) => {
 //log in!!!!!
 
 
-
 router.post("/", passport.authenticate("local", {
   
     successRedirect: "/perfil",
