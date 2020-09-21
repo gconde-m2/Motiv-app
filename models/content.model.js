@@ -4,19 +4,28 @@ const Schema = mongoose.Schema;
 const contentSchema = new Schema(
   {
     name: {
-      type: String, 
-      
+      type: String,
     },
 
     theme: {
-        type:[String],
-        enum:["social","work"]
+      type: [String],
+      enum: [
+        "social",
+        "work",
+        "health",
+        "beauty",
+        "home",
+        "friends",
+        "sports",
+        "food",
+        "music",
+        "travel",
+      ],
     },
 
     image: String,
-    song:String,
-    sentence:String
-
+    song: String,
+    sentence: String,
   },
   {
     timestamps: true,

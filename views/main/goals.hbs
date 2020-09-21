@@ -38,6 +38,20 @@
 
                         <a href="/main/goal/{{_id}}">{{this.name}}</a>
                     </li>
+                      <li class="goal-name">
+                        <a href="/main/goals/new-goal">
+                            Creating a new Goals
+                        </a>
+
+                        <a href="/main/goals/new-goal">{{this.name}}</a>
+                    </li>
+                    {{#each goals}}
+                      <li class="goal-name">
+                        <a href="/main/goals/new-goal">
+                            {{name}} {{content.sentence}}
+                        </a>
+                    </li>
+                    {{/each}}
                 </ul>
 
                 <a href="/main">Back</a>
