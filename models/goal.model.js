@@ -7,28 +7,16 @@ const goalSchema = new Schema(
       type: String, 
       
     },
-
-    theme: [String], 
-
-    sentence: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Sentence",
-        },
-    ],
-
-    picture: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Picture",
-        },
-    ],
-
-    song: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Song",
-        },
+    theme: {
+      type:[String],
+      enum:["social","work"]
+  },
+    content: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Content",
+      },
+    
     ],
     
   },

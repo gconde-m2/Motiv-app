@@ -59,11 +59,17 @@
 </body>
 <script>
 	new TypeIt("#phrase", {
-		strings: ["running", "my garden", "life"],
+		
 		startDelete: true,
-		speed: 65,
+		speed: 80,
 		loop: true,
 		cursorChar: " _"
 
-	}).go();
+	}).type("running", {delay: 2000})
+	.delete(null, {delay: 1000})
+	.type("my garden", {delay: 2000})
+	.delete(null, {delay: 1000})
+	.type("life", {delay: 2000})
+	.delete(null, {delay: 1000})
+	.go();
 </script>

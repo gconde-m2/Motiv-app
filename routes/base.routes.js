@@ -17,6 +17,6 @@ const checkRole = rolesToCheck => {
 
 // Endpoints
 router.get('/', (req, res) => res.render('index',{"errorMessage":req.flash("error")}))
-router.get('/main', checkLoggedIn, (req, res, next) => res.render('perfil/index',  {user: req.user }))
+router.get('/main', checkLoggedIn, (req, res, next) => res.render('main/index',  {user: req.user }))
 
 module.exports = router

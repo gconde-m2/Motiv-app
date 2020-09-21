@@ -9,9 +9,6 @@ const bcryptSalt = 10
 
 
 
-
-
-
 // signup!!!!!!!!!
 router.get("/registro", (req, res, next) => res.render("signup-form"))
 

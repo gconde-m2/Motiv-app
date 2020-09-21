@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
 body {
-  padding: 50px;
+  padding: 0;
   font-family: sans-serif;
 }
 
@@ -9,6 +9,26 @@ body {
   font-family: 'Cormorant Garamond',
     serif;
 
+}
+
+img {
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+  margin: 0;
+}
+
+.logo {
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  z-index: 99;
+}
+
+a {
+  transition: all .25s ease-in-out;
 }
 
 a:link {
@@ -230,28 +250,6 @@ input:focus {
 //-----------------------------------
 //DE AQUÍ EN ADELANTE NO HE TOCADO NADA
 
-.motiv-phrase-space {
-
-  position: relative;
-  text-align: center;
-
-}
-
-.motiv-phrase {
-
-  padding-top: 250px;
-  font-size: 50px;
-
-}
-
-.section-menu {
-
-  background-color: black;
-  text-align: center;
-
-  height: 300px;
-  padding-top: 115px;
-}
 
 .white {
   color: white;
@@ -261,3 +259,200 @@ input:focus {
   font-size: 40px;
   margin-top: 100px;
 }
+
+//--------- main
+.section-menu {
+  background-color: #252525;
+  text-align: center;
+  height: 300px;
+  padding-top: 100px;
+}
+
+.motiv-phrase-space {
+
+  text-align: center;
+  height: 100%;
+  padding: 0 10vw 0 10vw;
+}
+
+.motiv-phrase {
+
+  margin-top: 39vh;
+  font-size: 50px;
+
+
+}
+
+.section-menu p {
+  font-family: Raleway;
+  padding: 0 4vw 0 4vw;
+  font-weight: 200;
+}
+
+//------ goals list
+
+.container {
+  max-width: 100%;
+  margin: 0;
+}
+
+.list-box {
+  padding: 34px 70px 50px 180px;
+}
+
+.goals-list-content {
+  background-color: #252525;
+  color: white;
+  position: relative;
+  height: 100%;
+  overflow: scroll
+}
+
+.goals-list-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.goals-list-content h3 {
+  font-family: Raleway;
+  font-size: 3em;
+  font-weight: 200;
+}
+
+.goals-list-content .list-box li a {
+  font-family: Raleway;
+  font-size: 1.3em;
+  font-weight: 200;
+  margin-left: 5px;
+  margin-right: 200px;
+}
+
+.goals-list-content .list-box li:hover {
+  background-color: white;
+
+}
+
+.goals-list-content .list-box li {
+  border-bottom: 1px solid white;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+
+.goals-list-content .list-box a:hover {
+  background-color: white;
+  color: #252525;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 400;
+
+}
+
+.goals-list-content .list-box li a:focus {}
+
+.goals-list-content .sign p {
+  font-size: 1.3em;
+  transform: rotate(90deg);
+  position: fixed;
+
+}
+
+.list-box a {
+  font-family: Raleway;
+}
+
+//----------dentro del goal en concreto
+.inside-goal {
+
+
+  height: 100%;
+  width: 100%;
+}
+
+.inside-goal .goal-name p {
+  //no consigo darle una posición decente a esto HELPPPPPP
+
+  color: black;
+
+  transform: rotate(90deg);
+
+}
+
+//GRIDDDD
+/* Masonry grid */
+.masonry {
+  transition: all .5s ease-in-out;
+  column-gap: 30px;
+  column-fill: initial;
+}
+
+/* Masonry item */
+.masonry .brick {
+  margin-bottom: 30px;
+  display: inline-block;
+  /* Fix the misalignment of items */
+  vertical-align: top;
+  /* Keep the item on the very top */
+}
+
+/* Masonry image effects */
+.masonry .brick img {
+  transition: all .5s ease-in-out;
+  backface-visibility: hidden;
+  /* Remove Image flickering on hover */
+}
+
+.masonry .brick:hover img {
+  opacity: .75;
+}
+
+/* Bordered masonry */
+.masonry.bordered {
+  column-rule: 1px solid #eee;
+  column-gap: 50px;
+}
+
+.masonry.bordered .brick {
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Gutterless masonry */
+.masonry.gutterless {
+  column-gap: 0;
+}
+
+.masonry.gutterless .brick {
+  margin-bottom: 0;
+}
+
+/* Masonry on tablets */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .masonry {
+    column-count: 2;
+  }
+}
+
+/* Masonry on big screens */
+@media only screen and (min-width: 1024px) {
+  .desc {
+    font-size: 1.25em;
+  }
+
+  .masonry {
+    column-count: 3;
+  }
+
+
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+
+///PERFIL---------------------->
+

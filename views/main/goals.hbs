@@ -1,1 +1,54 @@
-paco {{user.username}}
+<div class="container goals-list-content">
+
+    <h2 class="logo">Motiv</h2>
+    <div class="list-box">
+        <h3>Goals</h3>
+        <div class="row">
+            <div class="col-sm-11 col-md-11 ">
+
+
+
+
+                {{!-- Goals aun no funciona --}}
+                <ul>
+                    <li class="goal-name">
+                        <a href="/main/goals/edit-goals">
+                            A garden
+                        </a>
+
+                        <a href="/main/goal/{{_id}}">{{this.name}}</a>
+                    </li>
+                    <li class="goal-name">
+                        <a href="#">
+                            Make songs
+                        </a>
+
+                        <a href="/main/goal/{{_id}}">{{this.name}}</a>
+                    </li>
+                    <li class="goal-name">
+                        <a href="#">
+                            Having a gerbil
+                        </a>
+                        <a href="/main/goal/{{_id}}">{{this.name}}</a>
+                    </li>
+                    <li class="goal-name">
+                        <a href="">
+                            Learning how to cook
+                        </a>
+
+                        <a href="/main/goal/{{_id}}">{{this.name}}</a>
+                    </li>
+                </ul>
+
+                <a href="/main">Back</a>
+            </div>
+
+
+            <div class="col-sm-1 col-md-1 sign">
+                <p>goals</p>
+                
+            </div>
+        </div>
+
+    </div>
+</div>

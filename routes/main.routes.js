@@ -2,7 +2,10 @@ const express = require('express')
 const router = express.Router()
 const User = require("../models/User.model")
 const ensureLogin = require('connect-ensure-login');
-const Sentence = require('../models/sentence.model')
+//const Sentence = require('../models/sentence.model')
+const Goal = require("../models/goal.model");
+
+
 
 
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
@@ -10,21 +13,22 @@ const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
 
  router.get('/', checkLoggedIn, (req, res, next) =>{ 
      
-    Sentence
-    .count()
-    .exec(function (err, count) {
+    // Sentence
+    // .count()
+    // .exec(function (err, count) {
 
-        var random = Math.floor(Math.random() * count)
+    //     var random = Math.floor(Math.random() * count)
     
-        Sentence.findOne().skip(random).exec(
-          function (err, sentence) {
-             res.render('main/index',  { sentence,user: req.user  })
+    //     Sentence.findOne().skip(random).exec(
+    //       function (err, sentence) {
+             res.render('main/index'/*,  { sentence,user: req.user  }*/)
           })
-        })
-    })
+       // })
+    //})
+    
 
 //goals
-router.get('/goals', checkLoggedIn, (req, res, next) => res.render('main/goals',  {user: req.user }))
+
 
 //Set aim
 router.get('/setaim', checkLoggedIn, (req, res, next) => res.render('main/setAim',  {user: req.user }))
