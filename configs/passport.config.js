@@ -3,8 +3,8 @@ const bcrypt = require("bcrypt")
 const passport = require("passport")
 const LocalStrategy = require("passport-local").Strategy
 const flash = require("connect-flash") 
-const User = require('../models/User.model')
-
+const User = require('../models/user.model')
+//cambio
 module.exports = app => {
 
     app.use(session({
