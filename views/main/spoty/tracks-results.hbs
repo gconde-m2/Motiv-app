@@ -5,14 +5,13 @@
     <div class=" col-6">
 
         <h5 style="margin-top: 20px;" class="card-title">{{name}}</h5>
-        <form action="/main/music" method="post">
-             <select name="goal" class="form-control" id="park-list">
-            <option>Seleccionar</option>
-            {{#each goals}}
-            <option value="{{_id}}">{{name}}</option>
-            {{/each}}
-              </select>
         
+           
+              <form action="/main/track/{{id}}" method="get">
+                {{id}}
+               <button class="btn btn-dark"type="submit">ver</button>
+        
+              </form>
         </form>
     </div>
 

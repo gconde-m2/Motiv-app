@@ -1,0 +1,17 @@
+pacooo
+ 
+{{#each tracksPage}}
+<form action="/main/track/{{id}}" method="POST">
+<input type="text" name="songId" value="{{id}}" id="">
+<input type="text" name="name" value="{{name}}" id=""><br>
+    <button class="btn btn-dark"type="submit">añade!!</button>
+</form>
+<div class=" col-6">
+    {{album.id}} <br><br>
+    {{name}}
+<audio controls src="{{preview_url}}"></audio>
+       <a class="btn btn-dark" href="/main/{{album.id}}/tracks">atras</a>
+    </div>
+{{id}}
+{{/each}}
+

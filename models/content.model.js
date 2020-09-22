@@ -24,7 +24,7 @@ const contentSchema = new Schema(
     },
 
     image: String,
-    song: String,
+    song: [String],
     sentence: String,
   },
   {

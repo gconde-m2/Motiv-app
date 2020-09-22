@@ -11,29 +11,35 @@
                 </div>
 
 
-                <div class="form-group" >
+                <div class="form-group">
                     <label for="exampleFormControlSelect1">Theme/s</label>
                     <select class="form-control" id="exampleFormControlSelect1">
-                        <option value="">social</option>
-                        <option value="">work</option>
-                        <option value="">health</option>
-                        <option value="">beauty</option>
-                        <option value="">home</option>
-                        <option value="">friends</option>
-                        <option value="">sports</option>
-                        <option value="">food</option>
-                        <option value="">travel</option>
+                        <option value="social">Social</option>
+                        <option value="work">Work</option>
+                        <option value="health">Health</option>
+                        <option value="beauty">Beauty</option>
+                        <option value="home">Home</option>
+                        <option value="friends">Friends</option>
+                        <option value="sports">Sports</option>
+                        <option value="food">Food</option>
+                        <option value="travel">Travel</option>
 
                     </select>
-
-                    <div class="form-group">
-                        <label>Phrase</label>
-                        <input name="sentence" type="text" placeholder="">
-                    </div>
-                
+                </div>
+                <div class="form-group">
+                    <label>Phrase</label>
+                    <input name="sentence" type="text" placeholder="">
+                </div>
                  {{!-- <input type="text" name="imageName" placeholder="Nombre de imagen"><br><br> --}}
-                  <input type="file" name="content"><br><br>
-                  <input type="submit" value="Subir">
+                  <input type="file" name="image"><br><br>
+                  <input type="submit" value="Subir"><br><br>
+                  <label for="music">Añade cancion</label>
+                  <a href="/main/music" class="btn btn-dark">aqui!</a><br><br>
+                    {{#each songs}}
+                    <ul>
+                        <li>{{name}}</li>
+                    </ul>
+                   {{/each}}
                     <button type="submit" class="btn btn-dark">Create</button>
             </form>
         </div>

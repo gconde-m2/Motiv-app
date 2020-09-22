@@ -6,6 +6,7 @@ const ensureLogin = require("connect-ensure-login");
 const Content = require("../models/content.model");
 const Goal = require("../models/goal.model");
 const uploadLocal = multer({ dest: './public/uploads/'})
+const Songs = require("../models/songs.model");
 
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
  res.render('index', { errorMessage: 'Desautorizado, inicia sesión para continuar' })
@@ -40,42 +41,50 @@ router.get("/edit-goals/:goal_id", checkLoggedIn, (req, res, next) => {
 
 //createeeee
 
-router.get("/new-goal", (req, res) =>
-  Goal.find().then((goal) => res.render("main/goals/new-goal", { goal }))
+router.get("/new-goal", (req, res) =>{
+  
+  Songs.find().then((songs) => res.render("main/goals/new-goal", { songs }))
+
+  
+  }
 );
 
-/*router.post("/new-goal", uploadLocal.single('content'), (req, res) => {
- let { name, theme, content } = req.body;
 
-  content= `/uploads/${req.file.filename}`
- // originalName= req.file.originalname
- console.log(content)
-  Goal
-  .create({ name, theme,content:{content:image}})
-  .then(() => res.redirect("/main/goals"));
-});*/
-
-router.post("/new-goal",uploadLocal.single('content'), (req, res) => {
-    
-    let { name, theme, content, sentence } = req.body;
-    content= `/uploads/${req.file.filename}`
-    console.log(content)
-    const createGoal = Goal.create({ name, theme })
-    Promise.all([createGoal])
-        .then(Goal.find({ name }).then(elm => (Content.create({elm:content,elm:sentence}))))
-      .then(() => res.redirect("/main/goals"));
+router.post("/new-goal",uploadLocal.single('image'), (req, res) => {
+  let { name, theme, content, sentence } = req.body;
+  image= `/uploads/${req.file.filename}`
+  const createGoal = Goal.create({ name, theme });
+  const createContent = Content.create({ sentence,content });
+  Promise.all([createGoal, createContent])
+    .then(resp =>  Goal.findByIdAndUpdate(resp[0]._id, { content: resp[1]._id }) )
+   .then(() => res.redirect("/main/goals"))
+  .catch((err)=> console.log(err))
 });
 
 
-/*
-router.post("/new-goal", (req, res) => {
-  const { name, theme, image, sentence } = req.body;
-  Goal.create({ name, theme })
-    .then(() => Content.create({ image, sentence }))
-    .then(() => res.redirect("/main/goals"));
+//aÃ±adir content a un goal
+
+router.get("/edit-goals/:goal_id/add-content", (req, res) => {
+  const id = req.params.goal_id;
+
+  Goal.findById(id)
+    .populate("content")
+    .then((goal) =>
+      res.render("main/goals/add-content.hbs", { user: req.user, goal })
+    );
 });
+router.post(
+  "/edit-goals/:goal_id/add-content",
+  uploadLocal.single("content"),
+  (req, res) => {
+    let { sentence } = req.body;
+    const id = req.params.goal_id;
 
-*/
-
+    Content.create({ sentence })
+      .then((content) => Goal.findByIdAndUpdate(id, { $push: { content } }))
+      .then(() => res.redirect(`/main/goals/edit-goals/:${id}`))
+      .catch((err) => console.log(err));
+  }
+);
 
 module.exports = router

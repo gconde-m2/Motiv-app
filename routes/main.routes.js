@@ -5,6 +5,7 @@ const ensureLogin = require('connect-ensure-login');
 //const Sentence = require('../models/sentence.model')
 const Goal = require("../models/goal.model");
 const Content = require("../models/content.model");
+const Song = require("../models/songs.model");
 
 
 
@@ -63,7 +64,7 @@ router.get('/artist-search', (req, res) => {
 
 })
 router.get('/:artistId/albums', (req, res, next) => {
-    spotifyApi.get(req.params.artistId)
+    spotifyApi.getArtistAlbums(req.params.artistId)
     .then(data => {
         res.render('main/spoty/albums-results', {artistAlbums: data.body.items})
     })
@@ -71,7 +72,7 @@ router.get('/:artistId/albums', (req, res, next) => {
 });
 
 
-router.get('/:albumId/tracks', (req,res)=>{
+router.get('/:albumId/tracks', (req,res,next)=>{
 
     spotifyApi.getAlbumTracks(req.params.albumId)
     .then(data =>{
@@ -82,14 +83,29 @@ router.get('/:albumId/tracks', (req,res)=>{
 })
 
 
- router.post('/:albumId/tracks',(req,res)=>{
-     const goal_id = req.params.song_id
-     
- })
 
 
-    // No disponemos del ID en el formulario, por lo que lo obtenemos mediante Route Params
+
+router.get('/track/:trackId', (req,res,next)=>{
+
+    spotifyApi.getTrack(req.params.trackId)
+    .then(tracksPage =>{
+
+        res.render('main/spoty/info-tracks', {tracksPage})
+    })
+    .catch(err => console.log('Error', err))
+})
+
     
-
+ router.post('/track/:trackId',(req,res,next)=>{
+    
+    const {songId,name} = req.body
+  
+  
+Song.create({songId,name})
+spotifyApi.getTrack(req.params.trackId)
+  .then((tracksPage) => res.render('main/spoty/info-tracks', {tracksPage}))
+  .catch(error => next(error))
+ })
 //musica enddd
 module.exports = router
