@@ -44,7 +44,7 @@ router.get("/edit-goals/:goal_id", checkLoggedIn, (req, res, next) => {
 router.get("/new-goal", (req, res) =>{
   
   Songs.find().then((songs) => res.render("main/goals/new-goal", { songs }))
-
+  //.then(() => (Goal.find().then((goal) => res.render("main/goals/new-goal", { goal }))
   
   }
 );
