@@ -30,9 +30,13 @@ router.get("/", checkLoggedIn, (req, res, next) =>
 );
 
 //edit
-router.get("/edit-goals", checkLoggedIn, (req, res, next) =>
-  res.render("main/goals/edit-goals", { user: req.user })
-);
+router.get("/edit-goals/:goal_id", checkLoggedIn, (req, res, next) => {
+  const id = req.params.goal_id;
+  Goal.findById(id).then((goal) =>
+    res.render("main/goals/edit-goals", { user: req.user, goal })
+  );
+});
+
 
 //createeeee
 
