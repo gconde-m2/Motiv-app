@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const multer = require('multer')
-const User = require("../models/User.model");
+const User = require("../models/user.model");
 const ensureLogin = require("connect-ensure-login");
 const Content = require("../models/content.model");
 const Goal = require("../models/goal.model");
 const uploadLocal = multer({ dest: './public/uploads/'})
 const Songs = require("../models/songs.model");
-
+//cambio
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
  res.render('index', { errorMessage: 'Desautorizado, inicia sesión para continuar' })
 //main/goals

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const User = require("../models/User.model")
+const User = require("../models/user.model")
 const ensureLogin = require('connect-ensure-login');
 //const Sentence = require('../models/sentence.model')
 const Goal = require("../models/goal.model");
@@ -8,7 +8,7 @@ const Content = require("../models/content.model");
 const Song = require("../models/songs.model");
 
 
-
+//cambiooo
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
  res.render('index', { errorMessage: 'Desautorizado, inicia sesión para continuar' })
 
