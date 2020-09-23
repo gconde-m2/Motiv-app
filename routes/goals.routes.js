@@ -13,6 +13,7 @@ const Songs = require("../models/songs.model");
 
 const { findByIdAndUpdate } = require("../models/user.model");
 var SpotifyWebApi = require('spotify-web-api-node');
+const Song = require("../models/songs.model");
 
 const spotifyApi = new SpotifyWebApi({
     clientId: process.env.CLIENT_ID,
@@ -52,9 +53,10 @@ router.get("/edit-goals", checkLoggedIn, (req, res, next) =>
 //   /*Goal.findById(id).then((goal) =>
 //     res.render("main/goals/edit-goals", { user: req.user, goal }),*/
 //    //me guardo el goal content en um then
-//       spotifyApi
-//       .getTracks("3PemitpJcfv2dYFOatMYb2","3PemitpJcfv2dYFOatMYb2")
-//       .then((songs) => songs.body.preview_url)
+      // spotifyApi
+      // .getTrack("3PemitpJcfv2dYFOatMYb2")
+      // .then((songs) => songs.body.preview_url)
+      // ${goal.content[2].song[0]}
 //         .then((songs) =>{  
 //           console.log(songs)
 //           res.render('main/goals/edit-goals', {songs} )
@@ -69,13 +71,13 @@ router.get("/", checkLoggedIn, (req, res, next) =>
 );
 
 //edit goal-list
-router.get("/edit-goals/:goal_id", checkLoggedIn, (req, res, next) => {
+router.get("/edit-goals/:goal_id",/* checkLoggedIn,*/ (req, res, next) => {
   const id = req.params.goal_id;
 
   Goal.findById(id)
     .populate("content")
-    .then((goal) =>
-      res.render("main/goals/edit-goals", { user: req.user, goal })
+    .then((goal) =>{
+      res.render("main/goals/edit-goals", { user: req.user, goal })}
     );
 });
 
@@ -144,34 +146,71 @@ router.post(
 
 router.get("/edit-goals/:goal_id/add-song", (req, res) => {
   const id = req.params.goal_id;
-  Goal.findById(id)
-    .then((goal) => res.render("main/goals/new-goal-song", goal))
-    .catch((err) => console.log(err));
-});
+  Song.find()
+  .then((songs) => {
+    Goal.findById(id)
+    .then((goal) => res.render("main/goals/new-goal-song",{songs, goal}))
+    .catch((err) => console.log(err))})
 
 
-//ediit goal
-
-router.get("/edit-goals/:goal_id/add-content", (req, res) => {
-  const id = req.params.goal_id;
-
-  Goal.findById(id)
-    .populate("content")
-    .then((goal) =>
-      res.render("main/goals/add-content.hbs", { user: req.user, goal })
+    router.post(
+      "/edit-goals/:goal_id/add-song",
+      uploadLocal.single("image"),
+      (req, res) => {
+        const id = req.params.goal_id;
+        let { song} = req.body;
+        
+        Content.create({ song }).then((content) =>
+          Goal.findByIdAndUpdate(id, { $push: { content } })
+            .then((goal) => res.redirect(`/main`))
+            .then(() => Song.collection.drop())
+            .catch((err) => console.log(err))
+        );
+      }
     );
 });
 
+
+router.get("/edit-goals/:goal_id/add-one-sentence", (req, res) => {
+  const id = req.params.goal_id;
+
+  Goal.findById(id)
+    .then((goal) => res.render("main/goals/add-sentence", goal))
+    .catch((err) => console.log(err));
+});
+
+router.post("/edit-goals/:goal_id/add-one-sentence", (req, res) => {
+  const id = req.params.goal_id;
+  let { sentence } = req.body;
+
+  Content.create({ sentence })
+    .then((content) => Goal.findByIdAndUpdate(id, { $push: { content } }))
+    .then(() => res.redirect(`/main/goals/edit-goals/${id}`))
+    .catch((err) => console.log(err));
+});
+
+//add picture to a goal already created
+
+router.get("/edit-goals/:goal_id/add-one-picture", (req, res) => {
+  const id = req.params.goal_id;
+
+  Goal.findById(id)
+    .then((goal) => res.render("main/goals/add-picture", goal))
+    .catch((err) => console.log(err));
+});
+
 router.post(
-  "/edit-goals/:goal_id/add-content",
+  "/edit-goals/:goal_id/add-one-picture",
   uploadLocal.single("image"),
   (req, res) => {
-    let { sentence, image, theme } = req.body;
     const id = req.params.goal_id;
 
-    Content.create({ sentence, image, theme })
+    let { image } = req.body;
+    image = `/uploads/${req.file.filename}`;
+
+    Content.create({ image })
       .then((content) => Goal.findByIdAndUpdate(id, { $push: { content } }))
-      .then(() => res.redirect(`/main/goals/edit-goals/:${id}`))
+      .then(() => res.redirect(`/main/goals/edit-goals/${id}`))
       .catch((err) => console.log(err));
   }
 );

@@ -1,4 +1,44 @@
 <body>
+    <h2 class="logo">Motiv</h2>
+    <a class="add song" href="/main/goals/edit-goals/{{goal.id}}/add-song">Add song</a>
+    <a class="add pict" href="/main/goals/edit-goals/{{goal.id}}/add-one-picture">Add picture</a>
+    <a class="add sente" href="/main/goals/edit-goals/{{goal.id}}/add-one-sentence">Add sentence</a>
+
+    <div class="container">
+
+        <div class="wrapper">
+            <div class="tittle">
+                <h3>{{goal.name}}</h3>
+            </div>
+            </h3>
+            <div class="grid gutterless">
+                {{#each goal.content}}
+                <a href="#">
+
+                    <div class="brick">
+                        {{#if image}}
+                        <img src="{{image}}" alt="{{name}}" title="" />
+                        {{/if}}
+
+                        {{#if sentence}}
+                        <p>{{sentence}}</p>
+                        {{/if}}
+
+                    </div>
+                </a>
+
+                {{/each}}
+            </div>
+        </div>
+    </div>
+    <a href="/main/goals" class="black go-back"> &#8592 back</a>
+</body>
+
+</html>
+
+
+
+{{!-- <body>
     <h2 class="logo">Motiv //edit goal</h2>
 <a class="add" href="/main/goals/edit-goals/{{goal.id}}/add-content">Add Motiv</a> 
     
@@ -14,11 +54,12 @@
                 <a href="#"><div class="brick">
                     <img src="{{image}}" alt="{{name}}" title="" />
                     <p>{{sentence}}</p>
+                    <p>{{song}}</p>
                 </div></a>
                
                 {{/each}}
                 <div class="grid gutterless"></div>
-                {{#each songs}}
+                {{#each song}}
                     <ul>
                         <li>{{name}}</li>
                         <audio controls src="{{this}}"></audio>
@@ -29,4 +70,4 @@
         </div>
     </div>
 </body>
-</html>
+</html> --}}

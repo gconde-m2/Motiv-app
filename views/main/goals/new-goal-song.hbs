@@ -1,0 +1,24 @@
+<h1>Añade tu canción</h1>
+
+<h3>Elige tus canciones</h3>
+<div>
+    
+    <a class="btn  btn-dark" href="/main/music">Añade canción</a>
+</div>
+<div>
+    <form action="/main/goals/edit-goals/{{goal.id}}/add-song" method="POST">
+        {{#each songs}}
+        <ul>
+            <li>
+                {{name}}
+                <input type="text"name="song" value={{id}}> 
+            </li>
+
+        </ul>
+
+        {{/each}}
+</div>
+
+<button type="submit" class="btn btn-dark">Create</button>
+
+</form>
