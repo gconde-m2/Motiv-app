@@ -58,6 +58,7 @@ router.post("/new-goal",uploadLocal.single('image'), (req, res) => {
   Promise.all([createGoal, createContent])
     .then(resp =>  Goal.findByIdAndUpdate(resp[0]._id, { content: resp[1]._id }) )
    .then(() => res.redirect("/main/goals"))
+   .then(() => Songs.collection.drop())
   .catch((err)=> console.log(err))
 });
 
