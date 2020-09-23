@@ -20,12 +20,15 @@ const contentSchema = new Schema(
         "food",
         "music",
         "travel",
+        "love",
+        "hobbies",
+        "art",
       ],
     },
 
     image: String,
     song: [String],
-    sentence: String,
+    sentence: [String],
   },
   {
     timestamps: true,

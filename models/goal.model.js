@@ -19,7 +19,10 @@ const goalSchema = new Schema(
         "sports",
         "food",
         "music",
-        "travel"
+        "travel",
+        "love",
+        "hobbies",
+        "art",
       ],
     },
     content: [

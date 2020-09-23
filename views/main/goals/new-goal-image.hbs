@@ -1,18 +1,16 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h1>Set goal</h1>
+            <h1>{{name}}</h1>
 
-            <form action="/main/goals/new-goal" method="post">
+            <form action="/main/goals/edit-goals/{{_id}}/add-image" method="post" enctype="multipart/form-data">
 
-                <div class="form-group">
-                    <label>Name</label>
-                    <input name="name" type="text" placeholder="Motiv for...">
-                </div>
+                <input type="file" name="image">
+                <input type="submit" value="Upload">
 
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">Theme/s</label>
-                    <select class="form-control" name="theme"  multiple>
+                    <select name="theme" type="checkbox" class="form-control" multiple>
 
                         <option value="art">Art</option>
                         <option value="beauty">Beauty</option>

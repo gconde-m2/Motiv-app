@@ -17,7 +17,15 @@
                 </div></a>
                
                 {{/each}}
+                <div class="grid gutterless"></div>
+                {{#each songs}}
+                    <ul>
+                        <li>{{name}}</li>
+                        <audio controls src="{{this}}"></audio>
+                    </ul>
+                    {{/each}}
             </div>
+            
         </div>
     </div>
 </body>

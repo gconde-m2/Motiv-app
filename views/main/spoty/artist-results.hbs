@@ -1,5 +1,6 @@
 
 {{> menuSpoty}}
+<div class="container goals-list-content">
    <div class="row">
          
     {{#each searchedArt}}
@@ -8,8 +9,10 @@
    <img src="{{images.2.url}}" class="artist-search-image" alt="images for {{name}}">
     
     <h5 style="margin-top: 20px;" class="card-title">{{name}}</h5>
-     <button class="buttons"><a href="/main/{{id}}/albums">View Albums</a></button>
+     <button class="buttons btn btn-dark"><a href="/main/{{id}}/albums">View Albums</a></button>
     </div>
     </article>
     
     {{/each}}
+
+    </div>
