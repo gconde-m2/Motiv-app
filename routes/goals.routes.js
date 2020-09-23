@@ -15,14 +15,13 @@ router.get('/', checkLoggedIn, (req, res, next) =>{
     Goal.find()
     .populate('Content')
     .then(allGoals=> res.render('main/goals', { goals: allGoals }))
+    .then(() => Songs.collection.drop())
     .catch(err => next(new Error(err)))
     
   })
 
 //edit
 router.get('/edit-goals', checkLoggedIn, (req, res, next) => res.render('main/goals/edit-goals',  {user: req.user }))
-
-
 
 
 //main/goals
@@ -38,7 +37,6 @@ router.get("/edit-goals/:goal_id", checkLoggedIn, (req, res, next) => {
   );
 });
 
-
 //createeeee
 
 router.get("/new-goal", (req, res) =>{
@@ -48,7 +46,6 @@ router.get("/new-goal", (req, res) =>{
   
   }
 );
-
 
 router.post("/new-goal",uploadLocal.single('image'), (req, res) => {
   let { name, theme, content, sentence } = req.body;
