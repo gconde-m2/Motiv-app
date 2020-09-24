@@ -6,7 +6,7 @@ const ensureLogin = require('connect-ensure-login');
 const Goal = require("../models/goal.model");
 const Content = require("../models/content.model");
 const Song = require("../models/songs.model");
-
+const spotifyApi = require("./../configs/spotify.config");
 
 //cambiooo
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
@@ -27,31 +27,15 @@ router.get('/', checkLoggedIn, (req, res, next) => {
 // })
 //})
 
-
-
-
-
 //Set aim
 router.get('/setaim', checkLoggedIn, (req, res, next) => res.render('main/setAim', { user: req.user }))
 
 //profile
 router.get('/perfil', checkLoggedIn, (req, res, next) => res.render('main/profile', { user: req.user }))
 
-
 //musica prueba
 
 router.get('/music', checkLoggedIn, (req, res, next) => res.render('main/spoty/music', { user: req.user }))
-var SpotifyWebApi = require('spotify-web-api-node');
-
-const spotifyApi = new SpotifyWebApi({
-    clientId: process.env.CLIENT_ID,
-    clientSecret: process.env.CLIENT_SECRET
-});
-spotifyApi
-    .clientCredentialsGrant()
-    .then(data => spotifyApi.setAccessToken(data.body['access_token']))
-    .catch(error => console.log('Something went wrong when retrieving an access token', error));
-
 
 router.get('/artist-search', (req, res) => {
     console.log("paco")

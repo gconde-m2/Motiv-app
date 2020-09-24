@@ -7,7 +7,7 @@ const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
 
 const checkRole = rolesToCheck => {
     return (req, res, next) => {
-        
+
         if (req.isAuthenticated() && rolesToCheck.includes(req.user.role))
             next()
         else 
