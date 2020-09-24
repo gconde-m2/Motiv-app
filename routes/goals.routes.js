@@ -20,7 +20,7 @@ const spotifyApi = require("./../configs/spotify.config");
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
   res.render('index', { errorMessage: 'Desautorizado, inicia sesión para continuar' })
 
-
+  
 //main/goals
 router.get("/", checkLoggedIn, (req, res, next) => {
   let id = req.user._id
@@ -127,7 +127,7 @@ router.post("/edit-goals/:goal_id/add-sentence", (req, res) => {
 
 router.get("/edit-goals/:goal_id/add-image", (req, res) => {
   const id = req.params.goal_id;
-  
+
   Goal.findById(id)
     .then((goal) => res.render("main/goals/new-goal-image", goal))
     .catch((err) => console.log(err));

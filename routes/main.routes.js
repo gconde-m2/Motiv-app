@@ -67,9 +67,6 @@ router.get('/:albumId/tracks', (req, res, next) => {
 })
 
 
-
-
-
 router.get('/track/:trackId', (req, res, next) => {
 
     spotifyApi.getTrack(req.params.trackId)
