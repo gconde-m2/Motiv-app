@@ -1,13 +1,17 @@
 const express = require('express')
 const router = express.Router()
+
 const User = require("../models/user.model")
 const ensureLogin = require('connect-ensure-login');
-//const Sentence = require('../models/sentence.model')
+
+
 const Goal = require("../models/goal.model");
 const Content = require("../models/content.model");
+
 const Song = require("../models/songs.model");
 const spotifyApi = require("./../configs/spotify.config");
 
+const Aux = require("../models/aux.model");
 //cambiooo
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
     res.render('index', { errorMessage: 'Desautorizado, inicia sesión para continuar' })
@@ -23,6 +27,9 @@ router.get('/', checkLoggedIn, (req, res, next) => {
     //     Sentence.findOne().skip(random).exec(
     //       function (err, sentence) {
     res.render('main/index'/*,  { sentence,user: req.user  }*/)
+    Aux.collection.drop()
+    Song.collection.drop()
+
 })
 // })
 //})
@@ -44,6 +51,7 @@ router.get('/artist-search', (req, res) => {
         .then(data => {
             res.render('main/spoty/artist-results', { searchedArt: data.body.artists.items })
         })
+
         .catch(err => console.log('error', err));
 
 })
@@ -68,11 +76,14 @@ router.get('/:albumId/tracks', (req, res, next) => {
 
 
 router.get('/track/:trackId', (req, res, next) => {
-
+   
     spotifyApi.getTrack(req.params.trackId)
         .then(tracksPage => {
-
-            res.render('main/spoty/info-tracks', { tracksPage })
+            Aux.find()
+            .then(el =>{ 
+                console.log(el[0].backString)
+                res.render('main/spoty/info-tracks', { tracksPage , backString: el[0].backString})})
+                .catch(err => console.log('Error', err))
         })
         .catch(err => console.log('Error', err))
 })
@@ -85,8 +96,13 @@ router.post('/track/:trackId', (req, res, next) => {
 
     Song.create({ songId, name })
     spotifyApi.getTrack(req.params.trackId)
-        .then((tracksPage) => res.render('main/spoty/info-tracks', { tracksPage }))
-        .catch(error => next(error))
+    .then(tracksPage => {
+        Aux.find()
+        .then(el =>{ 
+            console.log(el[0].backString)
+            res.render('main/spoty/info-tracks', { tracksPage , backString: el[0].backString})})
+            .catch(err => console.log('Error', err))
+    })
 })
 //musica enddd
 module.exports = router

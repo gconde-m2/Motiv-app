@@ -16,7 +16,7 @@ img {
   width: 100%;
   margin: 0; }
 
-.logo {
+.logo h2 {
   position: fixed;
   top: 30px;
   left: 30px;
@@ -202,7 +202,7 @@ input:focus {
 
 .motiv-phrase-space {
   text-align: center;
-  height: 100%;
+  height: calc(100% - 500px);
   padding: 0 10vw 0 10vw; }
 
 .motiv-phrase {
@@ -215,11 +215,9 @@ input:focus {
   font-weight: 200; }
 
 .container {
+  height: 60%;
   max-width: 100%;
   margin: 0; }
-
-.list-box {
-  padding: 34px 70px 50px 180px; }
 
 .goals-list-content {
   background-color: #252525;
@@ -236,6 +234,9 @@ input:focus {
   font-family: Raleway;
   font-size: 3em;
   font-weight: 200; }
+
+.list-box {
+  padding: 34px 70px 50px 180px; }
 
 .goals-list-content .list-box li {
   display: flex;
@@ -279,6 +280,19 @@ input:focus {
 .list-box a {
   font-family: Raleway;
   padding-right: 5px; }
+
+.list-box button {
+  border: 0;
+  background-color: white; }
+
+.list-box button:hover {
+  border: 0;
+  background-color: white;
+  cursor: crosshair; }
+
+.list-box .add-song {
+  background-color: white;
+  color: black; }
 
 .inside-goal {
   height: 100%;
@@ -356,5 +370,7 @@ form.form-goal button.scnd-text {
   background: white;
   color: black;
   border: none; }
+
+/*# sourceMappingURL=style.css.map */
 
 /*# sourceMappingURL=style.css.map */

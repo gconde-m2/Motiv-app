@@ -14,7 +14,6 @@ router.get("/registro", (req, res, next) => res.render("signup-form"))
 router.post("/registro", (req, res, next) => {
 
   const { username, password } = req.body
-
   if (username.length === 0 || password.length === 0) {
     res.render("signup-form", { errorMessage: "Indicate username and password" })
     return

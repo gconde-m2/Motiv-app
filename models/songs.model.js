@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const songSchema = new Schema(
   {
     songId: String,
-    name: String
+    name: String,
   }
 );
 

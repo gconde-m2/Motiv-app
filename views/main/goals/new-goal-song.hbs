@@ -1,24 +1,37 @@
-<h1>Añade tu canción</h1>
+<div class="container goals-list-content">
+    <div class="logo ">
+        <a href="/main">
+            <h2 class="white">Motiv</h2>
+        </a>
+    </div>
+    <div class="list-box">
+        <h3>{{name}}</h3>
+        <div class="row">
+            <div class="col-sm-11 col-md-11 ">
+                <label class="scnd-text">Song</label>
+                <div>
+                    <a class="add-song" href="/main/music">Add song</a>
+                </div>
 
-<h3>Elige tus canciones</h3>
-<div>
-    
-    <a class="btn  btn-dark" href="/main/music">Añade canción</a>
+                <form class="add-pictures form-goal scnd-text" action="/main/goals/edit-goals/{{goal.id}}/add-song" method="POST">
+                    {{#each songs}}
+                    <ul class="scnd-text">
+                        <li class="scnd-text">
+                            {{name}}
+                            <input class="scnd-text" type="text" name="song" value={{songId}}>
+                        </li>
+
+                    </ul>
+
+                    {{/each}}
+
+
+                    <button type="submit">Create</button>
+
+                </form>
+                <a href="/main/goals"> &#8592 back</a>
+            </div>
+
+        </div>
+    </div>
 </div>
-<div>
-    <form action="/main/goals/edit-goals/{{goal.id}}/add-song" method="POST">
-        {{#each songs}}
-        <ul>
-            <li>
-                {{name}}
-                <input type="text"name="song" value={{songId}}> 
-            </li>
-
-        </ul>
-
-        {{/each}}
-</div>
-
-<button type="submit" class="btn btn-dark">Create</button>
-
-</form>

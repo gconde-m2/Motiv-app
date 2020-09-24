@@ -14,7 +14,7 @@ const Songs = require("../models/songs.model");
 const { findByIdAndUpdate } = require("../models/user.model");
 var SpotifyWebApi = require('spotify-web-api-node');
 const Song = require("../models/songs.model");
-
+const Aux= require("../models/aux.model");
 const spotifyApi = require("./../configs/spotify.config");
 
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
@@ -138,7 +138,10 @@ router.post("/edit-goals/:goal_id/add-image",
   (req, res) => {
     const id = req.params.goal_id;
     let { image } = req.body;
-    image = `/uploads/${req.file.filename}`;
+    if(image)
+    {
+      image = `/uploads/${req.file.filename}`; 
+    }
     Content.create({ image })
     .then((content) => Goal.findByIdAndUpdate(id, { $push: { content } })
         .then((goal) => res.redirect(`/main/goals/edit-goals/${goal.id}/add-song`))
@@ -150,18 +153,21 @@ router.post("/edit-goals/:goal_id/add-image",
 // Add song to goal
 
 router.get("/edit-goals/:goal_id/add-song", (req, res) => {
+  
   const id = req.params.goal_id;
   Song.find()
     .then((songs) => {
       Goal.findById(id)
         .then((goal) => res.render("main/goals/new-goal-song", { songs, goal }))
+        
         .catch((err) => console.log(err))
     })
+    .then(()=> Aux.create({backString:id})) // he cambiado esto
     .catch((err) => next(new Error(err)))
   })
-
-  router.post(
-    "/edit-goals/:goal_id/add-song",
+//goback to songs
+  
+  router.post("/edit-goals/:goal_id/add-song",
     uploadLocal.single("image"),
     (req, res) => {
       const id = req.params.goal_id;
