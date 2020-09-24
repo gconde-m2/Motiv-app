@@ -31,6 +31,7 @@ const goalSchema = new Schema(
         ref: "Content",
       },
     ],
+    
   },
   {
     timestamps: true,
