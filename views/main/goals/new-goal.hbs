@@ -1,37 +1,40 @@
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <h1>Set goal</h1>
+<div class="container goals-list-content">
+    <h2 class="logo">Motiv</h2>
+    <div class="list-box">
 
-            <form action="/main/goals/new-goal" method="post">
+        <h3>Set goal</h3>
+        <div class="row">
+            <div class="col-sm-11 col-md-11 ">
+                <form class="form-goal" action="/main/goals/new-goal" method="post">
 
-                <div class="form-group">
-                    <label>Name</label>
-                    <input name="name" type="text" placeholder="Motiv for...">
-                </div>
+                    <div class="form-group">
+                        <label class="scnd-text">Name</label>
+                        <input class="scnd-text" name="name" type="text" placeholder="Motiv for...">
+                    </div>
 
-                <div class="form-group">
-                    <label for="exampleFormControlSelect1">Theme/s</label>
-                    <select class="form-control" name="theme"  multiple>
+                    <div class="form-group">
+                        <label class="scnd-text" for="exampleFormControlSelect1">Theme/s</label>
+                        <select class="form-control" name="theme" multiple>
 
-                        <option value="art">Art</option>
-                        <option value="beauty">Beauty</option>
-                        <option value="friends">Friends</option>
-                        <option value="food">Food</option>
-                        <option value="health">Health</option>
-                        <option value="hobbies">Hobbies</option>
-                        <option value="home">Home</option>
-                        <option value="love">Love</option>
-                        <option value="social">Social</option>
-                        <option value="sports">Sports</option>
-                        <option value="travel">Travel</option>
-                        <option value="work">Work</option>
+                            <option class="scnd-text" value="art">Art</option>
+                            <option class="scnd-text" value="beauty">Beauty</option>
+                            <option class="scnd-text" value="friends">Friends</option>
+                            <option class="scnd-text" value="food">Food</option>
+                            <option class="scnd-text" value="health">Health</option>
+                            <option class="scnd-text" value="hobbies">Hobbies</option>
+                            <option class="scnd-text" value="home">Home</option>
+                            <option class="scnd-text" value="love">Love</option>
+                            <option class="scnd-text" value="social">Social</option>
+                            <option class="scnd-text" value="sports">Sports</option>
+                            <option class="scnd-text" value="travel">Travel</option>
+                            <option class="scnd-text" value="work">Work</option>
 
-                    </select>
-                </div>
+                        </select>
+                    </div>
 
-                <button type="submit" class="btn btn-dark">Create</button>
-            </form>
+                    <button type="submit" class="btn-dark scnd-text">Create</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

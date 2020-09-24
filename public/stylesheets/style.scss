@@ -1,11 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-// colors
-//$dark-color: #333333;
-
-
-
-
 body {
   padding: 0;
   font-family: sans-serif;
@@ -162,7 +156,7 @@ input:focus {
 
   color: white;
   text-align: center;
-  height: 45vh;
+  height: 400px;
   margin-top: 150px;
   margin-bottom: auto;
   width: 310px;
@@ -170,7 +164,7 @@ input:focus {
 }
 
 .log-in .whole-form {
-  margin-top: 5vh;
+  margin-top: 40px;
 }
 
 .log-in h3 {
@@ -182,13 +176,13 @@ input:focus {
 }
 
 .log-in form {
-  margin-top: 6vh;
+  margin-top: 30px;
   font-size: 1em;
 }
 
 .log-in .passw-space {
-  margin-top: 4vh;
-  margin-bottom: 3vh;
+  margin-top: 35px;
+  margin-bottom: 35px;
 }
 
 
@@ -333,6 +327,11 @@ input:focus {
   font-weight: 200;
 }
 
+.goals-list-content .list-box li {
+  display: flex;
+  justify-content: space-between;
+}
+
 .goals-list-content .list-box li a {
   font-family: Raleway;
   font-size: 1.3em;
@@ -343,7 +342,19 @@ input:focus {
 
 .goals-list-content .list-box li:hover {
   background-color: white;
+}
 
+.goals-list-content .list-box li:hover a {
+  color: black;
+}
+
+.goals-list-content .list-box li .delete-btn {
+  color: #252525;
+  margin-right: 5px;
+}
+
+.goals-list-content .list-box li:hover .delete-btn {
+  color: black;
 }
 
 .goals-list-content .list-box li {
@@ -356,14 +367,10 @@ input:focus {
 .goals-list-content .list-box a:hover {
   background-color: white;
   color: #252525;
-  width: 100%;
-  margin-top: 20px;
-  margin-bottom: 10px;
   font-weight: 400;
-
 }
 
-.goals-list-content .list-box li a:focus {}
+
 
 .goals-list-content .sign p {
   font-size: 1.3em;
@@ -416,6 +423,86 @@ a.go-back:hover {
 .edit-box {
   padding: 34px 70px 50px 180px;
 }
+
+.goals-list-content .form-group .form-control:focus {
+  color: #495057;
+  background-color: #fff;
+
+  outline: 0;
+
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: white;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+}
+
+select option:checked {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+form.form-goal {
+  margin-top: 41px;
+}
+
+form.form-goal label {
+  font-family: Raleway;
+  font-size: 1.3em;
+  font-weight: 200;
+  margin-left: 5px;
+  margin-right: 10px;
+}
+
+form.form-goal input.scnd-text {
+  width: 100%;
+}
+
+form.form-goal button.scnd-text {
+  background-color: white;
+  border: 0;
+  margin-top: 20px;
+  color: black;
+}
+
+form.form-goal button:focus {
+  background-color: white;
+  border: 0;
+}
+
+form.form-goal button:active {
+  background-color: #252525;
+  border: 0;
+
+}
+
+form.form-goal button:active {
+  background-color: white;
+  border: 0;
+
+}
+
+.add-pictures input {
+  width: 100%;
+  color: #fff;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #fff;
+  margin-bottom: 30px;
+}
+
+.add-pictures .form-goal input .submit {
+  width: 93px;
+  color: #fff;
+  background: white;
+  color: black;
+  border: none;
+
+}
+
+
 
 
 ///PERFIL---------------------->

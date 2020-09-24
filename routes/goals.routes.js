@@ -233,12 +233,18 @@ router.post(
   }
 );
 //delete goals
-router.get("/edit-goals/:goal_id/delete", (req, res) => {
-  const id = req.params._id;
+router.get("/edit-goals/:goal_id/goal-delete", (req, res) => {
+  const id = req.params.goal_id;
   Goal.findByIdAndDelete(id)
     .then(() => res.redirect("/main/goals"))
     .catch((err) => console.log("error-------", err));
 });
-
+//delete content
+router.get("/edit-goals/:content_id/content-delete", (req, res) => {
+  const id = req.params.content_id;
+  Content.findByIdAndDelete(id)
+    .then(() => res.redirect(`/main/goals/`))
+    .catch((err) => console.log("error-------", err));
+});
 
 module.exports = router;
