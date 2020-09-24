@@ -32,18 +32,22 @@ const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
 
 //main/goals
 router.get("/", checkLoggedIn, (req, res, next) => {
-  User.find()
+  let id = req.user._id
+  console.log(id)
+  User.findById(id)
     .populate("goal")
-    .then((goal) => {
-
-      goal.forEach(elm => {
-
-
-      })
-      res.render("main/goals", { user: req.user, goal: req.user.goal })
+    .then((content) => {
+      let arr = []
+      content.goal.forEach(element => {
+        arr.push(element)
+      });
+      console.log(arr)
+      res.render("main/goals", { user: req.user, goal: arr })
     })
     .catch((err) => next(new Error(err)));
 });
+
+
 
 //edit
 router.get("/edit-goals", checkLoggedIn, (req, res, next) =>
@@ -59,8 +63,12 @@ router.get("/edit-goals/:goal_id",/* checkLoggedIn,*/async (req, res, next) => {
   const id = req.params.goal_id;
   const arr = []
   let goal = await Goal.findById(id).populate("content")
-  for (let i = 0; i < goal.content[2].song.length; i++) {
-    arr.push(await spotifyApi.getTrack(goal.content[2].song[i]))
+  
+  if(goal.content[1].song.length >= 2)
+  {
+    for (let i = 0; i < goal.content[2].song.length; i++) {
+      arr.push(await spotifyApi.getTrack(goal.content[2].song[i]))
+    }
   }
   res.render("main/goals/edit-goals", { user: req.user, goal, arr })
 
