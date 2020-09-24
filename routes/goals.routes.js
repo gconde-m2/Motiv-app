@@ -41,7 +41,7 @@ router.get("/", checkLoggedIn, (req, res, next) => {
       content.goal.forEach(element => {
         arr.push(element)
       });
-      console.log(arr)
+
       res.render("main/goals", { user: req.user, goal: arr })
     })
     .catch((err) => next(new Error(err)));
@@ -61,20 +61,29 @@ router.get("/edit-goals", checkLoggedIn, (req, res, next) =>
 //edit goal-list
 router.get("/edit-goals/:goal_id",/* checkLoggedIn,*/async (req, res, next) => {
   const id = req.params.goal_id;
-  const arr = []
+
+  let arr = []
+  let rep
   let goal = await Goal.findById(id).populate("content")
-  
-  if(goal.content[1].song.length >= 2)
-  {
-    for (let i = 0; i < goal.content[2].song.length; i++) {
-      arr.push(await spotifyApi.getTrack(goal.content[2].song[i]))
+  for (let k = 0; k < goal.content.length; k++) {
+    for (let i = 0; i < goal.content[k].song.length; i++) {
+
+      let obj = {
+        name: undefined,
+        preview_url: undefined,
+        album_name: undefined,
+        artist_name: undefined
+      }
+      rep = await spotifyApi.getTrack(goal.content[k].song[i])
+      obj.name = rep.body.name
+      obj.preview_url = rep.body.preview_url
+      obj.album_name = rep.body.album.name
+      obj.artist_name = rep.body.artists[0].name
+      arr.push(obj)
     }
   }
-  res.render("main/goals/edit-goals", { user: req.user, goal, arr })
-
-
+  res.render("main/goals/edit-goals", { user: req.user, goal, song: arr })
 });
-
 
 //create goal and theme
 
@@ -223,5 +232,13 @@ router.post(
       .catch((err) => console.log(err));
   }
 );
+//delete goals
+router.get("/edit-goals/:goal_id/delete", (req, res) => {
+  const id = req.params._id;
+  Goal.findByIdAndDelete(id)
+    .then(() => res.redirect("/main/goals"))
+    .catch((err) => console.log("error-------", err));
+});
+
 
 module.exports = router;

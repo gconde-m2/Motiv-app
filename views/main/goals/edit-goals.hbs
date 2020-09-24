@@ -14,7 +14,7 @@
             <div class="grid gutterless">
                 {{#each goal.content}}
                 <a href="#">
-
+                        
                     <div class="brick">
                         {{#if image}}
                         <img src="{{image}}" alt="{{name}}" title="" />
@@ -28,6 +28,13 @@
                 </a>
 
                 {{/each}}
+                {{#each song as |param|}}
+                    <audio controls src="{{ param.preview_url}}"></audio>
+                    
+                    {{param.name}} <br>
+                   
+               
+                {{/each}}
             </div>
         </div>
     </div>
@@ -35,39 +42,3 @@
 </body>
 
 </html>
-
-
-
-{{!-- <body>
-    <h2 class="logo">Motiv //edit goal</h2>
-<a class="add" href="/main/goals/edit-goals/{{goal.id}}/add-content">Add Motiv</a> 
-    
-    <div class="container">
-       
-        <div class="wrapper">
-            <div class="tittle">
-                <h3>{{goal.name}}</h3>
-            </div>
-            </h3>
-            <div class="grid gutterless">
-                {{#each goal.content}}
-                <a href="#"><div class="brick">
-                    <img src="{{image}}" alt="{{name}}" title="" />
-                    <p>{{sentence}}</p>
-                    <p>{{song}}</p>
-                </div></a>
-               
-                {{/each}}
-                <div class="grid gutterless"></div>
-                {{#each song}}
-                    <ul>
-                        <li>{{name}}</li>
-                        <audio controls src="{{this}}"></audio>
-                    </ul>
-                    {{/each}}
-            </div>
-            
-        </div>
-    </div>
-</body>
-</html> --}}
