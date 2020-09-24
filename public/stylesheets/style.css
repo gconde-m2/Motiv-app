@@ -277,7 +277,8 @@ input:focus {
   position: fixed; }
 
 .list-box a {
-  font-family: Raleway; }
+  font-family: Raleway;
+  padding-right: 5px; }
 
 .inside-goal {
   height: 100%;
@@ -340,18 +341,6 @@ form.form-goal button.scnd-text {
   border: 0;
   margin-top: 20px;
   color: black; }
-
-form.form-goal button:focus {
-  background-color: white;
-  border: 0; }
-
-form.form-goal button:active {
-  background-color: #252525;
-  border: 0; }
-
-form.form-goal button:active {
-  background-color: white;
-  border: 0; }
 
 .add-pictures input {
   width: 100%;

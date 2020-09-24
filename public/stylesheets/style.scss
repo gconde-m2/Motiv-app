@@ -381,6 +381,8 @@ input:focus {
 
 .list-box a {
   font-family: Raleway;
+  padding-right: 5px;
+
 }
 
 //----------dentro del goal en concreto
@@ -467,22 +469,7 @@ form.form-goal button.scnd-text {
   color: black;
 }
 
-form.form-goal button:focus {
-  background-color: white;
-  border: 0;
-}
 
-form.form-goal button:active {
-  background-color: #252525;
-  border: 0;
-
-}
-
-form.form-goal button:active {
-  background-color: white;
-  border: 0;
-
-}
 
 .add-pictures input {
   width: 100%;

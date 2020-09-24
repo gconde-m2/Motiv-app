@@ -12,19 +12,23 @@
             </div>
             </h3>
             <div class="grid gutterless">
+
                 {{#each goal.content}}
-                <a href="#">
-                        
-                    <div class="brick">
-                        {{#if image}}
-                        <img src="{{image}}" alt="{{name}}" title="" />
-                        {{/if}}
 
-                        {{#if sentence}}
-                        <p>{{sentence}}</p>
-                        {{/if}}
 
-                    </div>
+                <div class="brick">
+
+                    <a class="delete-content" href="/main/goals/edit-goals/{{_id}}/content-delete">
+                        Delete</a>
+                    {{#if image}}
+                    <img src="{{image}}" alt="{{name}}" title="" />
+                    {{/if}}
+
+                    {{#if sentence}}
+                    <p>{{sentence}}</p>
+                    {{/if}}
+
+                </div>
                 </a>
 
                 {{/each}}
