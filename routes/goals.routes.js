@@ -32,14 +32,15 @@ const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
 
 //main/goals
 router.get("/", checkLoggedIn, (req, res, next) => {
-  Goal.find()
-    .populate("Content")
+  User.find()
+    .populate("goal")
     .then((goal) => {
-      console.log(req.user._id)
 
-      console.log(goal[0].owner)
+      goal.forEach(elm => {
 
-      res.render("main/goals", { user: req.user, goal })
+
+      })
+      res.render("main/goals", { user: req.user, goal: req.user.goal })
     })
     .catch((err) => next(new Error(err)));
 });
@@ -52,42 +53,18 @@ router.get("/edit-goals", checkLoggedIn, (req, res, next) =>
 );
 
 
-//edit
-// router.get("/edit-goals/:goal_id",/* checkLoggedIn,*/ (req, res, next) => {
-//   const id = req.params.goal_id;
-
-/*Goal.findById(id).then((goal) =>
-  res.render("main/goals/edit-goals", { user: req.user, goal }),*/
-//me guardo el goal content en um then
-//       spotifyApi
-//       .getTrack("3PemitpJcfv2dYFOatMYb2")
-//       .then((songs) => songs.body.preview_url)
-//       {goal.content[2].song[0]}
-//         .then((songs) =>{  
-//           console.log(songs)
-//           res.render('main/goals/edit-goals', {songs} )
-//       })
-//       .catch(err => console.log('error', err))
-
-// })
-
-//main/goals list
-
 
 //edit goal-list
-router.get("/edit-goals/:goal_id",/* checkLoggedIn,*/async(req, res, next) => {
+router.get("/edit-goals/:goal_id",/* checkLoggedIn,*/async (req, res, next) => {
   const id = req.params.goal_id;
   const arr = []
   let goal = await Goal.findById(id).populate("content")
-      console.log(goal)
-      for (let i = 0; i < goal.content[2].song.length; i++) {
-        console.log(goal.content[2].song[i])
-         arr.push(await spotifyApi.getTrack(goal.content[2].song[i]))
-       }
-        console.log(arr)
-        res.render("main/goals/edit-goals", { user: req.user, goal, arr })
-      
-    
+  for (let i = 0; i < goal.content[2].song.length; i++) {
+    arr.push(await spotifyApi.getTrack(goal.content[2].song[i]))
+  }
+  res.render("main/goals/edit-goals", { user: req.user, goal, arr })
+
+
 });
 
 
@@ -100,17 +77,23 @@ router.get("/new-goal", checkLoggedIn, (req, res) =>
 router.post("/new-goal", checkLoggedIn, (req, res) => {
   let { name, theme } = req.body;
   let userid = req.user._id
-  console.log(userid)
+
   Goal.create({ name, theme })
     .then((goal) => {
-      console.log(goal)
-      let pepe = goal._id
+      goal.theme.map((goalThm) =>
+        Content.find({ theme: { $in: [goalThm] } })
+          .then((relatedContent) =>
+            Goal.findByIdAndUpdate(goal.id, {
+              $push: { content: relatedContent }
+            })))
+      let route = goal._id
       User.findById(userid)
         .then((user) => {
           user.goal.push(goal)
           user.save()
+
         })
-      res.redirect(`/main/goals/edit-goals/${pepe}/add-sentence`)
+      res.redirect(`/main/goals/edit-goals/${route}/add-sentence`)
     })
     .catch((err) => console.log(err))
 })
@@ -171,7 +154,7 @@ router.get("/edit-goals/:goal_id/add-song", (req, res) => {
         .catch((err) => console.log(err))
     })
 
-router.post(
+  router.post(
     "/edit-goals/:goal_id/add-song",
     uploadLocal.single("image"),
     (req, res) => {
