@@ -1,112 +1,140 @@
 @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 body {
   padding: 0;
-  font-family: sans-serif; }
+  font-family: sans-serif;
+}
 
 * {
-  font-family: 'Cormorant Garamond', serif; }
+  font-family: 'Cormorant Garamond', serif;
+}
 
 a:hover {
-  cursor: crosshair; }
+  cursor: crosshair;
+}
 
 img {
-  width: 100%; }
+  width: 100%;
+}
 
 .container {
   width: 100%;
-  margin: 0; }
+  margin: 0;
+}
 
 .logo h2 {
   position: fixed;
   top: 30px;
   left: 30px;
-  z-index: 99; }
+  z-index: 99;
+}
 
 a {
-  transition: all .25s ease-in-out; }
+  transition: all .25s ease-in-out;
+}
 
 a:link {
   text-decoration: none;
-  color: white; }
+  color: white;
+}
 
 a:visited {
   text-decoration: none;
-  color: white; }
+  color: white;
+}
 
 nav {
-  float: right; }
+  float: right;
+}
 
 nav li {
   display: inline-block;
   list-style: none;
-  margin: 0 10px; }
+  margin: 0 10px;
+}
 
 html,
 body {
   background-color: white;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100%; }
+  height: 100%;
+}
 
 .container {
   height: 100%;
-  align-content: center; }
+  align-content: center;
+}
 
 input {
   color: #fff;
   background: none;
   border: none;
-  border-bottom: 1px solid #fff; }
+  border-bottom: 1px solid #fff;
+}
 
 .login-inputs {
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+}
 
 .input-pass {
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+}
 
 .card-header h3 {
-  color: white; }
+  color: white;
+}
 
 input:focus {
   outline: 0 0 0 0 !important;
-  box-shadow: 0 0 0 0 !important; }
+  box-shadow: 0 0 0 0 !important;
+}
 
 .remember {
-  color: white; }
+  color: white;
+}
 
 .remember input {
   width: 20px;
   height: 20px;
   margin-left: 15px;
-  margin-right: 5px; }
+  margin-right: 5px;
+}
 
 .login_btn {
   color: black;
   background-color: white;
   width: 100px;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto;
+}
 
 .links {
-  color: white; }
+  color: white;
+}
 
 .links a {
-  margin-left: 4px; }
+  margin-left: 4px;
+}
 
 .title-main {
   font-stretch: condensed;
   font-size: 150px;
-  margin-top: 110px; }
+  margin-top: 110px;
+}
 
 #phrase {
-  font-size: 100px; }
+  font-size: 100px;
+}
 
 .main-text {
-  font-family: 'Cormorant Garamond', serif; }
+  font-family: 'Cormorant Garamond', serif;
+}
 
 .scnd-text {
-  font-family: 'Raleway', sans-serif; }
+  font-family: 'Raleway', sans-serif;
+}
 
 .log-in {
   color: white;
@@ -115,192 +143,236 @@ input:focus {
   margin-top: 150px;
   margin-bottom: auto;
   width: 310px;
-  background-color: #252525 !important; }
+  background-color: #252525 !important;
+}
 
 .log-in .whole-form {
-  margin-top: 40px; }
+  margin-top: 40px;
+}
 
 .log-in h3 {
   color: white;
   margin-top: 4vh;
   font-weight: 400;
-  font-size: 1.3em; }
+  font-size: 1.3em;
+}
 
 .log-in form {
   margin-top: 30px;
-  font-size: 1em; }
+  font-size: 1em;
+}
 
 .log-in .passw-space {
   margin-top: 35px;
-  margin-bottom: 35px; }
+  margin-bottom: 35px;
+}
 
 .login_btn {
   font-weight: 200;
-  transition: color; }
+  transition: color;
+}
 
 .log-in label {
   font-size: 1em;
-  font-weight: 200; }
+  font-weight: 200;
+}
 
 .log-in .end-text {
   margin-top: 1vhpx;
   font-size: .9em;
-  font-weight: 200; }
+  font-weight: 200;
+}
 
 .log-in .login-inputs {
-  width: 70%; }
+  width: 70%;
+}
 
 .text-index {
-  margin-left: 7vw; }
+  margin-left: 7vw;
+}
 
 .text-index h1 {
-  font-size: 400; }
+  font-size: 400;
+}
 
 .text-index #phrase {
-  font-size: 4em; }
+  font-size: 4em;
+}
 
 .log-in a:hover {
   color: #252525;
   background-color: white;
-  cursor: crosshair; }
+  cursor: crosshair;
+}
 
 .log-in a:active {
   color: white;
-  background-color: #252525; }
+  background-color: #252525;
+}
 
 input:focus {
   outline: none;
   background-color: white;
-  color: #252525; }
+  color: #252525;
+}
 
 .login_btn:hover {
   border-color: #252525;
   background-color: #252525;
   color: white;
-  cursor: crosshair; }
+  cursor: crosshair;
+}
 
 .login_btn:active {
   border-color: #252525;
   background-color: white;
-  color: #252525; }
+  color: #252525;
+}
 
 .white {
-  color: white; }
+  color: white;
+}
 
 .black {
-  color: black; }
+  color: black;
+}
 
 .hrefs {
   font-size: 40px;
-  margin-top: 100px; }
+  margin-top: 100px;
+}
 
 .section-menu {
   background-color: #252525;
   text-align: center;
   height: 300px;
-  padding-top: 100px; }
+  padding-top: 100px;
+}
 
 .motiv-phrase-space {
   text-align: center;
   height: calc(100% - 500px);
-  padding: 0 10vw 0 10vw; }
+  padding: 0 10vw 0 10vw;
+}
 
 .motiv-phrase {
   margin-top: 39vh;
-  font-size: 50px; }
+  font-size: 50px;
+}
 
 .section-menu p {
   font-family: Raleway;
   padding: 0 4vw 0 4vw;
-  font-weight: 200; }
+  font-weight: 200;
+}
 
 .container {
   height: 60%;
   max-width: 100%;
-  margin: 0; }
+  margin: 0;
+}
 
 .goals-list-content {
   background-color: #252525;
   color: white;
   position: relative;
   height: 100%;
-  overflow: scroll; }
+  overflow: scroll;
+}
 
 .goals-list-content ul {
   list-style: none;
-  padding: 0; }
+  padding: 0;
+}
 
 .goals-list-content h3 {
   font-family: Raleway;
   font-size: 3em;
-  font-weight: 200; }
+  font-weight: 200;
+}
 
 .list-box {
-  padding: 34px 70px 50px 180px; }
+  padding: 34px 70px 50px 180px;
+}
 
 .goals-list-content .list-box li {
   display: flex;
-  justify-content: space-between; }
+  justify-content: space-between;
+}
 
 .goals-list-content .list-box li a {
   font-family: Raleway;
   font-size: 1.3em;
   font-weight: 200;
   margin-left: 5px;
-  margin-right: 200px; }
+  margin-right: 200px;
+}
 
 .goals-list-content .list-box li:hover {
-  background-color: white; }
+  background-color: white;
+}
 
 .goals-list-content .list-box li:hover a {
-  color: black; }
+  color: black;
+}
 
 .goals-list-content .list-box li .delete-btn {
   color: #252525;
-  margin-right: 5px; }
+  margin-right: 5px;
+}
 
 .goals-list-content .list-box li:hover .delete-btn {
-  color: black; }
+  color: black;
+}
 
 .goals-list-content .list-box li {
   border-bottom: 1px solid white;
   margin-top: 40px;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+}
 
 .goals-list-content .list-box a:hover {
   background-color: white;
   color: #252525;
-  font-weight: 400; }
+  font-weight: 400;
+}
 
 .goals-list-content .sign p {
   font-size: 1.3em;
   transform: rotate(90deg);
-  position: fixed; }
+  position: fixed;
+}
 
 .list-box a {
   font-family: Raleway;
-  padding-right: 5px; }
+  padding-right: 5px;
+}
 
 .list-box button {
   border: 0;
-  background-color: white; }
+  background-color: white;
+}
 
 .list-box button:hover {
   border: 0;
   background-color: white;
-  cursor: crosshair; }
+  cursor: crosshair;
+}
 
 .list-box .add-song {
   background-color: white;
-  color: black; }
+  color: black;
+}
 
 .inside-goal {
   height: 100%;
-  width: 100%; }
+  width: 100%;
+}
 
 a.add:hover {
   background-color: #252525;
-  color: white; }
+  color: white;
+}
 
 a.go-back {
   color: black;
@@ -309,52 +381,63 @@ a.go-back {
   left: 30px;
   z-index: 99;
   font-family: Raleway;
-  font-size: 1.1em; }
+  font-size: 1.1em;
+}
 
 a.go-back:hover {
   background-color: #252525;
-  color: white; }
+  color: white;
+}
 
 .inside-goal .goal-name p {
   color: black;
-  transform: rotate(90deg); }
+  transform: rotate(90deg);
+}
 
 .edit-box {
-  padding: 34px 70px 50px 180px; }
+  padding: 34px 70px 50px 180px;
+}
 
 .goals-list-content .form-group .form-control:focus {
   color: #495057;
   background-color: #fff;
-  outline: 0; }
+  outline: 0;
+}
 
 .form-control:focus {
   color: #495057;
   background-color: #fff;
   border-color: white;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25); }
+  box-shadow: 0 0 0 0.2rem rgba(0, 0, 0, 0.25);
+}
 
 select option:checked {
-  background: rgba(0, 0, 0, 0.3); }
+  background: rgba(0, 0, 0, 0.3);
+}
 
 form.form-goal {
-  margin-top: 41px; }
+  margin-top: 41px;
+}
 
 form.form-goal label {
   font-family: Raleway;
   font-size: 1.3em;
   font-weight: 200;
   margin-left: 5px;
-  margin-right: 10px; }
+  margin-right: 10px;
+}
 
 form.form-goal input.scnd-text {
-  width: 100%; }
+  width: 100%;
+}
 
 form.form-goal button.scnd-text {
   background-color: white;
   border: 0;
   margin-top: 20px;
-  color: black; }
+  color: black;
+}
 
 .add-pictures input {
   width: 100%;
@@ -362,13 +445,124 @@ form.form-goal button.scnd-text {
   background: none;
   border: none;
   border-bottom: 1px solid #fff;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+}
 
 .add-pictures .form-goal input .submit {
   width: 93px;
   color: #fff;
   background: white;
   color: black;
-  border: none; }
+  border: none;
+}
+
+// spotify part
+
+h1.lookfor-spoti {
+  font-size: 2em;
+  font-weight: 200;
+}
+
+input.lookfor-spoti {
+  width: 100%;
+}
+
+button.scnd-text.btn.btn-lg.btn-dark.lookfor-spoti {
+  cursor: crosshair;
+}
+
+button.lookfor-spoti {
+  margin-top: 30px;
+  font-size: 1em;
+  border: 0;
+  border-radius: 0;
+  color: white;
+  background-color: #252525;
+
+}
+
+button.lookfor-spoti:hover {
+  margin-top: 30px;
+  font-size: 1em;
+  border: 0;
+  border-radius: 0;
+  color: black;
+  background-color: white;
+
+}
+
+button.lookfor-spoti:active {
+  margin-top: 30px;
+  font-size: 1em;
+  border: 0;
+  border-radius: 0;
+  color: white;
+  background-color: #252525;
+
+}
+
+button.lookfor-spoti:visited {
+  margin-top: 30px;
+  font-size: 1em;
+  border: 0;
+  border-radius: 0;
+  color: white;
+  background-color: #252525;
+
+}
+
+.spoti-box {
+  padding-top: 60px;
+}
+
+.spoti-box h5 {
+  margin-top: 30px;
+}
+
+.spoti-box article {
+  text-align: center
+}
+
+.spoti-box img {
+  width: 200px;
+}
+
+.spoti-box .artist {
+  font-weight: 200;
+  font-size: 1.1em;
+}
+
+.lookfor-spoti a:hover {
+  color: black;
+}
+
+.spoti-box-tracks {
+  padding: 10vw;
+}
+
+.spoti-box audio {
+  margin-top: 25px;
+}
+
+.spoti-box .back-spoti {
+  color: black;
+
+}
+
+.spoti-box .back-spoti:hover {
+  color: white;
+
+  background-color: #252525;
+}
+
+img.artist-search-image {
+  width: 200px;
+}
+
+.brick #text {
+  font-family: Raleway;
+}
+
+
 
 /*# sourceMappingURL=style.css.map */

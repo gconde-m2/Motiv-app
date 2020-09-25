@@ -2,54 +2,26 @@ const mongoose = require("mongoose");
 
 const Goal = require("../models/goal.model");
 const Content = require("../models/content.model");
-
+const Sentence = require("../models/sentence.model");
 
 const dbtitle = "PROYECTO";
 mongoose.connect(`mongodb://localhost/${dbtitle}`);
 
-Goal.collection.drop();
-Content.collection.drop();
 
 
-const goals = [
+
+const sentences = [
 {
-  name: "Garden",
-  theme: ["work","social"],
+  sentence: ["La diferencia entre donde estuviste ayer y donde estarás mañana es lo que pienses digas y hagas hoy",
+  "Trabaja en silencio, haz que el éxito haga todo el ruido.","Pregúntate si lo que estás haciendo hoy te acerca al lugar en el que quieres estar mañana.",
+  "Si no puedes dejar de pensar en algo, no dejes de trabajar en ello."
 
-  content:{
-    
-      name: "name",
-  
-      theme:["social","work"],
-      
-  
-      image: "",
-      song:"",
-      sentence:"fantastico la vida"
-  
-    },
-  },
-  {
-    name: "paco",
-    theme: ["work","social"],
-  
-    content:{
-      
-        name: "name",
-    
-        theme:["social","work"],
-        
-    
-        image: "",
-        song:"",
-        sentence:"fantastico la vida"
-    
-      },
-    }
 ]
-Content.create(goals)
+} 
+]
+Sentence.create(sentences)
    
-Goal.create(goals)
+
 
 
 // const createContent = goals.map(goal =>{

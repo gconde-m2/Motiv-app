@@ -1,23 +1,18 @@
+<div class="container goals-list-content spoti-box">
+  <div class="row">
 
-{{> menuSpoty}}
-<div class="container goals-list-content">
-<div class="row">
-         
     {{#each artistAlbums}}
-    <article style ="text-align: center"class="col-md-6 col-lg-4">
-     <div class="card-body">
-   <img src="{{images.1.url}}" class="artist-search-image" alt="images for {{album}}">
-    
-    <h5 style="margin-top: 20px;" class="card-title">{{name}}</h5>
-     <button class="buttons btn btn-dark"><a href="/main/{{id}}/tracks">View tracks</a></button>
-    </div>
+    <article class="col-md-6 col-lg-4">
+      <div class="card-body">
+        <img src="{{images.1.url}}" class="artist-search-image" alt="images for {{album}}">
+
+        <h5 class="card-title scnd-text artist">{{name}}</h5>
+        <button class=" scnd-text btn btn-lg btn-dark lookfor-spoti"><a class="scnd-text" href="/main/{{id}}/tracks">View tracks</a></button>
+      </div>
     </article>
-    
+
     {{/each}}
 
-    </div>
-
-    
-    
+  </div>
   
 

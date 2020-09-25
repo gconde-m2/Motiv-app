@@ -4,8 +4,11 @@
 <section class="container">
 
 <div class="motiv-phrase-space">
-    <p class="motiv-phrase" >{{sentence.phrase}}Frase cool</p>
-    <p>{{sentence.author}}</p>
+    {{#each sentence}}
+    
+    <p class="motiv-phrase" >{{this}}</p>
+  
+    {{/each}}
 </div>
 
 </section>
@@ -21,7 +24,7 @@
     <p class="white">establishing something that you hope to achieve</p>
 </div>
 <div class="col-4 ">
-    <a class="hrefs white" href="main/perfil">Profile</a> {{!-- revisarrrrr --}}
+    <a class="hrefs white" href="main/perfil">Profile</a> 
     <p class="white">you</p>
 </div>
 

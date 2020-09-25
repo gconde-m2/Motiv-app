@@ -1,28 +1,26 @@
 <div class="container goals-list-content">
 
-    <div class="logo ">
-        <a href="/main">
-            <h2 class="white">Motiv</h2>
-        </a>
-    </div>
+    <h2 class="logo">Motiv</h2>
     <div class="list-box">
         <h3>Goals</h3>
         <div class="row">
             <div class="col-sm-11 col-md-11 ">
 
-              
                 <ul>
+
+                    <a href="/main/goals/{{_id}}">{{this.name}}</a>
+                    </li>
                     {{#each goal}}
-                    
                     <li>
-                        <a href="/main/goals/edit-goals/{{this._id}}">
-                            {{this.name}}
+                        <a href="/main/goals/edit-goals/{{id}}">
+                            {{name}}
                         </a>
+                        <a href="/main/goals/edit-goals/{{_id}}/goal-delete" class="delete-btn">Delete</a>
                     </li>
                     {{/each}}
                 </ul>
 
-                <a href="/main">Back</a>
+                <a href="/main"> &#8592 back</a>
             </div>
 
 

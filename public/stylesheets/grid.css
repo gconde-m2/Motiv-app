@@ -91,11 +91,18 @@ a:visited {
   opacity: .40;
 }
 
+.grid .brick audio:hover {
+  opacity: .40;
+}
+
+.
+
+
 
 
 a.delete-content {
   font-family: raleway;
-  color:transparent;
+  color: transparent;
   text-align: left;
   position: absolute;
   top: 0;

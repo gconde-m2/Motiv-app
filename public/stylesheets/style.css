@@ -371,6 +371,86 @@ form.form-goal button.scnd-text {
   color: black;
   border: none; }
 
+h1.lookfor-spoti {
+  font-size: 2em;
+  font-weight: 200; }
+
+input.lookfor-spoti {
+  width: 100%; }
+
+button.scnd-text.btn.btn-lg.btn-dark.lookfor-spoti {
+  cursor: crosshair; }
+
+button.lookfor-spoti {
+  margin-top: 30px;
+  font-size: 1em;
+  border: 0;
+  border-radius: 0;
+  color: white;
+  background-color: #252525; }
+
+button.lookfor-spoti:hover {
+  margin-top: 30px;
+  font-size: 1em;
+  border: 0;
+  border-radius: 0;
+  color: black;
+  background-color: white; }
+
+button.lookfor-spoti:active {
+  margin-top: 30px;
+  font-size: 1em;
+  border: 0;
+  border-radius: 0;
+  color: white;
+  background-color: #252525; }
+
+button.lookfor-spoti:visited {
+  margin-top: 30px;
+  font-size: 1em;
+  border: 0;
+  border-radius: 0;
+  color: white;
+  background-color: #252525; }
+
+.spoti-box {
+  padding-top: 60px; }
+
+.spoti-box h5 {
+  margin-top: 30px; }
+
+.spoti-box article {
+  text-align: center; }
+
+.spoti-box img {
+  width: 200px; }
+
+.spoti-box .artist {
+  font-weight: 200;
+  font-size: 1.1em; }
+
+.lookfor-spoti a:hover {
+  color: black; }
+
+.spoti-box-tracks {
+  padding: 10vw; }
+
+.spoti-box audio {
+  margin-top: 25px; }
+
+.spoti-box .back-spoti {
+  color: black; }
+
+.spoti-box .back-spoti:hover {
+  color: white;
+  background-color: #252525; }
+
+img.artist-search-image {
+  width: 200px; }
+
+.brick #text {
+  font-family: Raleway; }
+
 /*# sourceMappingURL=style.css.map */
 
 /*# sourceMappingURL=style.css.map */
