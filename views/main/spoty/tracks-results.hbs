@@ -1,14 +1,4 @@
-    <header>
-     <nav class=" logo navbar navbar-expand-lg navbar-dark bg-primary" style="margin-left: 1500px;">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" style="color:white" href="/main/goals/edit-goals/{{backString.0.backString}}/add-song">Volver <span class="sr-only">(current)</span></a>
-     </nav>
-     </div>
-</header>
+<body style= "background-color: #333333; color:white";>
 {{#each tracksPage}}
 
 <div class="row">
@@ -19,7 +9,7 @@
         
            
               <form action="/main/track/{{id}}" method="get">
-                {{id}}
+               
                <button class="btn btn-dark"type="submit">ver</button>
         
               </form>
@@ -34,6 +24,7 @@
 </div>
 
 </div>
-</article>
-</div>
+
 {{/each}}
+
+</body>

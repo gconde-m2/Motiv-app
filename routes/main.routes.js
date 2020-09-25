@@ -7,34 +7,30 @@ const ensureLogin = require('connect-ensure-login');
 
 const Goal = require("../models/goal.model");
 const Content = require("../models/content.model");
-const Sentence = require("../models/sentence.model");
+
 const Song = require("../models/songs.model");
 const spotifyApi = require("./../configs/spotify.config");
 
 const Aux = require("../models/aux.model");
-//cambiooo
+
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
     res.render('index', { errorMessage: 'Desautorizado, inicia sesión para continuar' })
 
 router.get('/', checkLoggedIn, (req, res, next) => {
-    let arr = []
-    Sentence
+    Content
         .count()
         .exec((err, count) => {
             var random = Math.floor(Math.random() * count)
-            Sentence.findOne().skip(random)
+            Content.findOne().skip(random)
                 .exec((err, sentence) => {
                     console.log(sentence)
-                    for(let i = 0; i < sentence.length; i++){
-                        arr.push(sentence[i])
-                        console.log(arr)
-                    }
-                    res.render('main/index', { sentence: sentence, user: req.user })
+                    if(sentence.sentence.length < 1 )
+                        sentence.sentence = "Don’t limit yourself. Many people limit themselves to what they think they can do. You can go as far as your mind lets you. What you believe, remember, you can achieve."
+                    res.render('main/index', { sentence, user: req.user })
                     Aux.collection.drop()
                     Song.collection.drop()
                 })
         })
-
 })
 
 //Set aim
@@ -50,7 +46,6 @@ router.get('/perfil', checkLoggedIn, (req, res, next) => {
             res.render('main/profile', { user: req.user, userData })
         })
         .catch(err => console.log('error', err));
-
 })
 
 //musica prueba
@@ -92,7 +87,7 @@ router.get('/track/:trackId', (req, res, next) => {
         .then(tracksPage => {
             Aux.find()
                 .then(el => {
-                    console.log(el[0].backString)
+                    console.log(tracksPage.body.preview_url)
                     res.render('main/spoty/info-tracks', { tracksPage, backString: el[0].backString })
                 })
                 .catch(err => console.log('Error', err))

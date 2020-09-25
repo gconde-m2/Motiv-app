@@ -20,7 +20,6 @@ const spotifyApi = require("./../configs/spotify.config");
 const checkLoggedIn = (req, res, next) => req.isAuthenticated() ? next() :
   res.render('index', { errorMessage: 'Desautorizado, inicia sesión para continuar' })
 
-  
 //main/goals
 router.get("/", checkLoggedIn, (req, res, next) => {
   let id = req.user._id
@@ -47,8 +46,8 @@ router.get("/edit-goals", checkLoggedIn, (req, res, next) =>
 );
 
 
-//edit goal-list
-router.get("/edit-goals/:goal_id",/* checkLoggedIn,*/async (req, res, next) => {
+//edit goal-list // usando await para poder sacar scopes
+router.get("/edit-goals/:goal_id", checkLoggedIn,async (req, res, next) => {
   const id = req.params.goal_id;
   let arr = []
   let rep
@@ -97,6 +96,7 @@ router.post("/new-goal", checkLoggedIn, (req, res) => {
           user.goal.push(goal)
           user.save()
         })
+        .catch((err) => next(new Error(err)));
       res.redirect(`/main/goals/edit-goals/${route}/add-sentence`)
     })
     .catch((err) => console.log(err))
@@ -138,10 +138,7 @@ router.post("/edit-goals/:goal_id/add-image",
   (req, res) => {
     const id = req.params.goal_id;
     let { image } = req.body;
-    if(image)
-    {
-      image = `/uploads/${req.file.filename}`; 
-    }
+    image = `/uploads/${req.file.filename}`; 
     Content.create({ image })
     .then((content) => Goal.findByIdAndUpdate(id, { $push: { content } })
         .then((goal) => res.redirect(`/main/goals/edit-goals/${goal.id}/add-song`))
@@ -159,19 +156,19 @@ router.get("/edit-goals/:goal_id/add-song", (req, res) => {
     .then((songs) => {
       Goal.findById(id)
         .then((goal) => res.render("main/goals/new-goal-song", { songs, goal }))
-        
         .catch((err) => console.log(err))
     })
     .then(()=> Aux.create({backString:id})) // he cambiado esto
     .catch((err) => next(new Error(err)))
   })
-//goback to songs
+//go back to songs
   
   router.post("/edit-goals/:goal_id/add-song",
     uploadLocal.single("image"),
     (req, res) => {
       const id = req.params.goal_id;
       let { song } = req.body;
+      
       Content.create({ song })
       .then((content) =>
         Goal.findByIdAndUpdate(id, { $push: { content } })
@@ -212,15 +209,13 @@ router.get("/edit-goals/:goal_id/add-one-picture", (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.post(
-  "/edit-goals/:goal_id/add-one-picture",
+router.post("/edit-goals/:goal_id/add-one-picture",
   uploadLocal.single("image"),
   (req, res) => {
     const id = req.params.goal_id;
 
     let { image } = req.body;
     image = `/uploads/${req.file.filename}`;
-
     Content.create({ image })
       .then((content) => Goal.findByIdAndUpdate(id, { $push: { content } }))
       .then(() => res.redirect(`/main/goals/edit-goals/${id}`))
@@ -230,6 +225,7 @@ router.post(
 //delete goals
 router.get("/edit-goals/:goal_id/goal-delete", (req, res) => {
   const id = req.params.goal_id;
+ 
   Goal.findByIdAndDelete(id)
     .then(() => res.redirect("/main/goals"))
     .catch((err) => console.log("error-------", err));
@@ -237,6 +233,7 @@ router.get("/edit-goals/:goal_id/goal-delete", (req, res) => {
 //delete content
 router.get("/edit-goals/:content_id/content-delete", (req, res) => {
   const id = req.params.content_id;
+
   Content.findByIdAndDelete(id)
     .then(() => res.redirect(`/main/goals/`))
     .catch((err) => console.log("error-------", err));

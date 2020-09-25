@@ -1,6 +1,6 @@
-
+<body style= "background-color: #333333; color:white";>
     <header>
-     <nav class=" logo navbar navbar-expand-lg navbar-dark bg-primary" style="margin-left: 1500px;">
+     <nav class=" logo navbar navbar-expand-lg navbar-dark bg-primary" style="margin-left: 1200px;">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -10,11 +10,11 @@
      </nav>
      </div>
 </header>
-<div class="spoti-box spoti-box-tracks">
+
   {{#each tracksPage}}
   <form action="/main/track/{{id}}" method="POST">
-    <input type="text" name="songId" value="{{id}}" id="">
-    <input type="text" name="name" value="{{name}}" id=""><br>
+    <input style="color:#333333; border:0;" type="text" name="songId" value="{{id}}" id="">
+    <input style="color:#333333; border:0;" type="text" name="name" value="{{name}}" id=""><br>
     <button class="scnd-text btn btn-lg btn-dark lookfor-spoti" type="submit">Add</button>
   </form>
   <div class=" col-6">
@@ -28,3 +28,4 @@
 
   {{/each}}
 </div>
+</body>
