@@ -23,8 +23,11 @@ router.get('/', checkLoggedIn, (req, res, next) => {
             var random = Math.floor(Math.random() * count)
             Content.findOne().skip(random)
                 .exec((err, sentence) => {
+                   if(sentence)
+                   { 
                     if(sentence.sentence.length < 1 )
                         sentence.sentence = "Don’t limit yourself. Many people limit themselves to what they think they can do. You can go as far as your mind lets you. What you believe, remember, you can achieve."
+                   }   
                     res.render('main/index', { sentence, user: req.user })
                     Aux.collection.drop()
                     Song.collection.drop()
