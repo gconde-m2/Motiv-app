@@ -23,7 +23,6 @@ router.get('/', checkLoggedIn, (req, res, next) => {
             var random = Math.floor(Math.random() * count)
             Content.findOne().skip(random)
                 .exec((err, sentence) => {
-                    console.log(sentence)
                     if(sentence.sentence.length < 1 )
                         sentence.sentence = "Don’t limit yourself. Many people limit themselves to what they think they can do. You can go as far as your mind lets you. What you believe, remember, you can achieve."
                     res.render('main/index', { sentence, user: req.user })
@@ -42,7 +41,6 @@ router.get('/perfil', checkLoggedIn, (req, res, next) => {
     User.findById(user)
         .populate("goal")
         .then(userData => {
-            console.log(userData)
             res.render('main/profile', { user: req.user, userData })
         })
         .catch(err => console.log('error', err));
@@ -53,7 +51,6 @@ router.get('/perfil', checkLoggedIn, (req, res, next) => {
 router.get('/music', checkLoggedIn, (req, res, next) => res.render('main/spoty/music', { user: req.user }))
 
 router.get('/artist-search', (req, res) => {
-    console.log("paco")
     spotifyApi
         .searchArtists(req.query.artist)
         .then(data => {
